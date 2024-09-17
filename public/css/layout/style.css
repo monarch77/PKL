@@ -170,7 +170,8 @@ aside .sidebar a{
     height: 3.7rem;
     gap: 1rem;
     position: relative;
-    margin-left: 2rem;
+    margin-left: 0;
+    padding-left: 2rem;
     transition: all 0.3s ease;
 }
 
@@ -190,6 +191,7 @@ aside .sidebar a.active{
     color: var(--color-primary);
     background-color: var(--color-light);
     margin-left: 0;
+    padding-left: 2rem;
 }
 
 aside .sidebar a.active::before{
@@ -205,10 +207,13 @@ aside .sidebar a.active span{
 }
 
 aside .sidebar a:hover{
+    background-color: var(--color-light);
     color: var(--color-primary);
+    padding-left: 1.8rem;
 }
 
 aside .sidebar a:hover span{
+    color: var(--color-primary);
     margin-left: 0.6rem;
 }
 
