@@ -33,19 +33,19 @@
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="#">
+                <a href="/dashboardadmin/profile">
                     <span class="material-symbols-outlined">
                         person_outline
                     </span>
                     <h3>Admin</h3>
                 </a>
-                <a href="#">
+                <a href="/dashboardadmin/klaim">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
                     <h3>Klaim</h3>
                 </a>
-                <a href="#">
+                <a href="/dashboardadmin/laporan">
                     <span class="material-symbols-outlined">
                         insights
                     </span>
@@ -63,7 +63,7 @@
                     </span>
                     <h3>Bantuan</h3>
                 </a>
-                <a href="#">
+                <a href="/logout">
                     <span class="material-symbols-outlined">
                         logout
                     </span>
