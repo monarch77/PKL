@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Admin</title>
-</head>
-<body>
-    <h1>Ini Halaman Profile</h1>
-</body>
-</html>
+@extends('layouts.layout')
+
+@section('title', 'Profile Admin')
+
+@section('content')
+<h1>Halaman Profile Admin</h1>
+<p>Ini adalah halaman untuk mengelola profil admin.</p>
+@endsection
