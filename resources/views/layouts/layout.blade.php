@@ -74,15 +74,6 @@
                     </span>
                     <h3>LogOut</h3>
                 </a>
-                <form action="{{ route('logout') }}" method="POST" class="inline-block">
-                    @csrf
-                    <button type="submit" class="flex items-center">
-                        <span class="material-symbols-outlined">
-                            logout
-                        </span>
-                        <h3>LogOut</h3>
-                    </button>
-                </form>
             </div>
         </aside>
         <!-- End Sidebar -->
