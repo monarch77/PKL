@@ -45,7 +45,7 @@
                     </span>
                     <h3>Klaim</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="#">
                     <span class="material-symbols-outlined">
                         insights
                     </span>
@@ -72,6 +72,11 @@
             </div>
         </aside>
         <!-- End Sidebar -->
+
+        <!-- Main Content -->
+         <main>
+            <h1>Dashboard Admin</h1>
+         </main>
     </div>
 
 
