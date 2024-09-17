@@ -11,18 +11,21 @@
 </head>
 
 <body>
-    <aside>
-        <div class="container">
-            <!-- Sidebar -->
-            <div class="logo">
-                <img src="" alt="logo">
-                <h2>Insura</h2>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/dashboard/Logo.png" alt="logo">
+                    <h2>Insura</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
             </div>
-            <div class="close" id="close-btn">
-                <span class="material-symbols-outlined">
-                    close
-                </span>
-            </div>
+            
             <div class="sidebar">
                 <a href="#">
                     <span class="material-symbols-outlined">
@@ -67,8 +70,8 @@
                     <h3>LogOut</h3>
                 </a>
             </div>
-    </aside>
-
+        </aside>
+        <!-- End Sidebar -->
     </div>
 
 
