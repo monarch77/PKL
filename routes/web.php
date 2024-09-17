@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\claimAdminController;
 use App\Http\Controllers\ProfileAdminController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 //login
@@ -34,4 +32,4 @@ Route::get('/dashboarduser', function () {
 Route::get('/logout', function () {
     return view('login');
 });
-Route::post('/logout', [AuthLoginController::class, 'logout'])->name('logout');
+
