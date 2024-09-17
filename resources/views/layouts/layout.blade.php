@@ -17,10 +17,10 @@
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <a href="#">
+                    <a href="/dashboardadmin">
                         <img src="{{ asset('images/dashboard/Logo.png') }}" alt="logo">
                     </a>
-                    <a href="#">
+                    <a href="/dashboardadmin">
                         <h2>Insura</h2>
                     </a>
                 </div>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="sidebar">
-                <a href="dashboard">
+                <a href="/dashboardadmin">
                     <span class="material-symbols-outlined">
                         dashboard
                     </span>
