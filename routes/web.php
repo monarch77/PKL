@@ -2,12 +2,13 @@
 
 use App\Http\Controllers\claimAdminController;
 use App\Http\Controllers\ProfileAdminController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 //login
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', [SessionController::class, 'index']);
+Route::post('/', [SessionController::class, 'login']);
+
 
 //admin
 Route::get('/dashboardadmin', function () {
@@ -20,16 +21,11 @@ Route::get('/dashboardadmin/laporan', function () {
     return view('admin/laporan');
 });
 
-
-
-
 //user
 Route::get('/dashboarduser', function () {
     return view('user/dashboard');
 });
 
 //logout
-Route::get('/logout', function () {
-    return view('login');
-});
+Route::get('/logout', [SessionController::class, 'logout']);
 
