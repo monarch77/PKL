@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script
         src="https://kit.fontawesome.com/64d58efce2.js"
-        crossorigin="anonymous"
-    ></script>
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/login/style.css') }}">
     <title>Welcome to Insura</title>
 </head>
+
 <body>
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="" class="sign-in-form">
+                <form action="" class="sign-in-form" method="POST">
                     @csrf
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email"/>
+                        <input type="email" value="{{ old('email') }}" name="email" placeholder="Email" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
+                        <input type="password" name="password" placeholder="Password" />
                     </div>
-                    <input type="submit" value="Login" class="btn solid"/>
+                    <input type="submit" value="Login" class="btn solid" />
+                    @if ($errors->any())
+                    <div class="alert danger-alert">
+                        <ul>
+                            @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
 
                     <!-- <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
@@ -104,4 +114,5 @@
 
     <script src="js/login/app.js"></script>
 </body>
+
 </html>
