@@ -37,19 +37,19 @@
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/dashboarduser/profile">
-                    <span class="material-symbols-outlined">
-                        person_outline
-                    </span>
-                    <h3>Profile</h3>
-                </a>
                 <a href="/dashboarduser/klaim">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
-                    <h3>Klaim</h3>
+                    <h3>Klaim Saya</h3>
                 </a>
-                <a href="/dashboarduser/laporan">
+                <a href="/dashboarduser/ajukanklaim">
+                    <span class="material-symbols-outlined">
+                        post_add
+                    </span>
+                    <h3>Ajukan Klaim</h3>
+                </a>
+                <a href="#">
                     <span class="material-symbols-outlined">
                         insights
                     </span>
