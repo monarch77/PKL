@@ -26,7 +26,11 @@ class SessionController extends Controller
         ];
 
         if (Auth::attempt($infologin)){
-            return redirect('/dashboardadmin');
+            if (Auth::user()->role == 'admin'){
+                return redirect('/dashboardadmin');
+            }else if (Auth::user()->role == 'user'){
+                return redirect('/dashboarduser');
+            }
         }else{
             return redirect('')->withErrors('Username dan Password yang Dimasukkan Tidak Sesuai')->withInput();
         }
