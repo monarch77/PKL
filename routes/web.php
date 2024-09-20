@@ -25,6 +25,12 @@ Route::get('/dashboardadmin/laporan', function () {
 Route::get('/dashboarduser', function () {
     return view('user/dashboard');
 });
+Route::get('/dashboarduser/klaim', function () {
+    return view('user/klaim');
+});
+Route::get('/dashboarduser/ajukanklaim', function () {
+    return view('user/pengajuan_klaim');
+});
 
 //logout
 Route::get('/logout', [SessionController::class, 'logout']);
