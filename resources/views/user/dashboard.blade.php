@@ -3,6 +3,6 @@
 @section('title', 'Dashboard User')
 
 @section('content')
-<h1>Halaman Dashboard User</h1>
+<h1>Dashboard User</h1>
 <p>Ini adalah halaman Dashboard User.</p>
 @endsection

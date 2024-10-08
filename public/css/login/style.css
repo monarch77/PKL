@@ -132,37 +132,6 @@ form.sign-up-form{
     background-color: #ff4c68;
 }
 
-.social-text{
-    padding: .7rem 0;
-    margin: 0;
-    font-size: 1rem;
-}
-
-.social-media{
-    display: flex;
-    justify-content: center;
-}
-
-.social-icon{
-    height: 46px;
-    width: 46px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    color: #333;
-    border-radius: 50%;
-    border: 1px solid #333;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: .3s;
-}
-
-.social-icon:hover{
-    color: #ff4c68;
-    border-color: #ff4c68;
-}
-
 .image{
     width: 60%;
     transition: 1.1s .4s ease-in-out;
@@ -225,6 +194,17 @@ form.sign-up-form{
 
 .right-panel .content, .right-panel .image{
     transform: translateX(800px);
+}
+
+/* Style for danger-alert */
+.danger-alert ul {
+    list-style-type: none; /* Menghilangkan titik pada list */
+    padding-left: 0; /* Menghilangkan indentasi default pada list */
+}
+
+.danger-alert ul li {
+    color: red; /* Warna teks merah */
+    font-weight: 400; /* Menebalkan teks agar lebih jelas */
 }
 
 /* Bagian Animasi */

@@ -38,17 +38,17 @@
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/dashboarduser/klaim">
-                    <span class="material-symbols-outlined">
-                        receipt_long
-                    </span>
-                    <h3>Klaim Saya</h3>
-                </a>
                 <a href="/dashboarduser/ajukanklaim">
                     <span class="material-symbols-outlined">
                         post_add
                     </span>
                     <h3>Ajukan Klaim</h3>
+                </a>
+                <a href="/dashboarduser/klaim">
+                    <span class="material-symbols-outlined">
+                        receipt_long
+                    </span>
+                    <h3>Klaim Saya</h3>
                 </a>
                 <a href="#">
                     <span class="material-symbols-outlined">
@@ -105,7 +105,7 @@
                 <div class="profile">
                     <div class="info">
                         <p>Hey, <b>Zeta</b></p>
-                        <small class="text-muted">Admin</small>
+                        <small class="text-muted">User</small>
                     </div>
                     <div class="profile-photo">
                         <img src="{{ asset('images/dashboard/profile.jpeg') }}" alt="Foto Profil">
