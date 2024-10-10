@@ -1,25 +1,55 @@
+//button next & back
 const form = document.querySelector('form'),
-      nextBtn = document.querySelector('.nextBtn'),  // Perbaiki pemanggilan class
-      backBtn = document.querySelector('.backBtn'),  // Perbaiki pemanggilan class
-      allInput = form.querySelectorAll(".first input");  // Mengambil semua input di dalam div dengan class 'first'
+      nextBtn = document.querySelector('.nextBtn'),  
+      backBtn = document.querySelector('.backBtn'),  
+      allInput = form.querySelectorAll(".first input");  
 
 nextBtn.addEventListener('click', () => {
-    let allFilled = true;  // Flag untuk mengecek apakah semua input sudah terisi
+    let allFilled = true;  
 
     allInput.forEach(input => {
         if (input.value === "") {
-            allFilled = false;  // Jika ada input yang kosong, flag diubah
+            allFilled = false;  
         }
     });
 
     if (allFilled) {
-        form.classList.add('secActive');  // Tambahkan class jika semua input terisi
+        form.classList.add('secActive');  
     } else {
-        form.classList.remove('secActive');  // Hapus class jika ada input yang kosong
-        alert("Input is empty");
+        form.classList.remove('secActive');  
     }
 });
 
 backBtn.addEventListener('click', () => {
-    form.classList.remove('secActive');  // Menghapus class secActive ketika tombol back diklik
+    form.classList.remove('secActive');  
 });
+
+//script rp dan pemisah ribuan
+const nominalInput = document.getElementById('nominal-klaim');
+
+nominalInput.addEventListener('focus', function() {
+    if (!nominalInput.value.startsWith('Rp.')) {
+        nominalInput.value = 'Rp. ' + nominalInput.value;
+    }
+});
+
+nominalInput.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/[^\d]/g, ''); 
+
+    if (!nominalInput.value.startsWith('Rp.')) {
+        nominalInput.value = 'Rp. ' + formatRibuan(value);
+    } else {
+        nominalInput.value = 'Rp. ' + formatRibuan(value);
+    }
+});
+
+function formatRibuan(value) {
+    return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+form.addEventListener('submit', function(e) {
+    let value = nominalInput.value.replace(/\./g, ''); // Menghapus semua titik
+    nominalInput.value = value.replace('Rp. ', '');    // Menghapus simbol "Rp."
+});
+
+

@@ -113,6 +113,20 @@ form.secActive .form.first{
     box-shadow: 0 0 5px rgba(64, 112, 244, 0.5); 
 }
 
+form .fields .input-fields.deskripsi{
+    display: flex;
+    width: calc(100% / 1 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+form .fields .input-fields.dokumen{
+    display: flex;
+    width: calc(100% / 1 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
 form .fields .input-fields{
     display: flex;
     width: calc(100% / 3 - 15px);
@@ -132,6 +146,25 @@ form .fields .input-fields{
 
 .input-fields input[type="date"]:valid{
     color: #333;
+}
+
+.input-fields.deskripsi{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    margin: 10px;
+}
+
+
+
+textarea {
+    width: 100%; 
+    height: 50px; 
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    resize: vertical; 
 }
 
 select {
@@ -157,7 +190,6 @@ select:focus {
     border-color: #007bff; 
     outline: none; 
 }
-
 
 .container-1 form button, .backBtn{
     display: flex;

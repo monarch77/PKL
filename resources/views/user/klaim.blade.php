@@ -1,6 +1,6 @@
 @extends('layouts.sidebar_user')
 
-@section('title', 'Dashboard User')
+@section('title', 'Klaim Saya')
 
 @section('content')
 <h1>Halaman Klaim Asuransi</h1>
