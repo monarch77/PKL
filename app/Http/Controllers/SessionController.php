@@ -36,6 +36,10 @@ class SessionController extends Controller
         }
     }
 
+    function indexRegister (){
+        return view('register');
+    }
+
     function logout(){
         Auth::logout();
         return redirect('/');

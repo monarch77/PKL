@@ -8,25 +8,21 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    function create (array $data){
-        return User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'profile_picture' => $data['profile_picture'],
-            'address' => $data['address'],
-            'phone_number' => $data['phone_number'],
-            'gender' => $data['gender'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'role' => $data['role'],
+    public function register(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
+
+        $user = new User();
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Register Berhasil, silahkan login');
     }
 
-    function validator (array $data) {
-        return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
 }

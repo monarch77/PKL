@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/registrasi/style.css') }}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <title>Form Registrasi</title>
+    <title>Pengajuan Klaim</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="input-fields">
                             <label>No Telepon</label>
-                            <input type="text" placeholder="Masukkan No Telepon" required>
+                            <input type="number" placeholder="Masukkan No Telepon" required>
                         </div>
                         <div class="input-fields">
                             <label for="gender">Jenis Kelamin</label>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="input-fields">
                             <label>ID Number</label>
-                            <input type="text" placeholder="Masukkan ID Number" required>
+                            <input type="number" placeholder="Masukkan ID Number" required>
                         </div>
                         <div class="input-fields">
                             <label>Issued Date</label>
@@ -128,7 +128,7 @@
                         </div>
                         <div class="input-fields">
                             <label>No. Rumah</label>
-                            <input type="text" placeholder="Masukkan No. Rumah" required>
+                            <input type="number" placeholder="Masukkan No. Rumah" required>
                         </div>
                     </div>
 
@@ -155,10 +155,10 @@
                             <label>Nominal Klaim</label>
                             <input type="text" id="nominal-klaim" placeholder="Masukkan Nominal Klaim" required>
                         </div>
-                        <!-- <div class="input-fields deskripsi">
+                        <div class="input-fields deskripsi">
                             <label>Deskripsi Singkat Kejadian</label>
                             <textarea placeholder="Masukkan Deskripsi Singkat" required></textarea>
-                        </div> -->
+                        </div>
                         <div class="input-fields dokumen">
                             <label>Dokumen Pendukung</label>
                             <input type="file" accept=".jpg, .jpeg, .png, .pdf" multiple required>

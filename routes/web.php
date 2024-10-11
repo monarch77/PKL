@@ -12,7 +12,7 @@ Route::get('/', [SessionController::class, 'index']);
 Route::post('/', [SessionController::class, 'login']);
 
 //register
-
+Route::get('/register', [SessionController::class, 'indexRegister']);
 
 //middleware
 Route::middleware(['auth'])->group(function () {
