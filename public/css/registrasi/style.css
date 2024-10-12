@@ -58,7 +58,7 @@ main{
 .container-1 form .form{
     position: absolute;
     background-color: #fff;
-    transition: 0.3s ease;
+    transition: all 0.8s ease;
 }
 
 .container-1 form .form.second{

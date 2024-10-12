@@ -12,11 +12,11 @@
     <title>Welcome to Insura</title>
 </head>
 
-<body>
-    <div class="container">
+<body class="{{ session('showRegister') ? 'sign-up-mode' : '' }}">
+    <div class="container {{ session('showRegister') ? 'sign-up-mode' : '' }}">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="" class="sign-in-form" method="POST">
+                <form action="{{ route('login')}}" class="sign-in-form" method="POST">
                     @csrf
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
@@ -28,32 +28,57 @@
                         <input type="password" name="password" placeholder="Password" />
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
-                    @if ($errors->any())
+                    @if ($errors->has('email'))
                     <div class="alert danger-alert">
                         <ul>
-                            @foreach ($errors->all() as $item)
-                            <li>{{ $item }}</li>
+                            <li>{{ $errors->first('email') }}</li>
+                        </ul>
+                    </div>
+                    @endif
+                    @if ($errors->has('password'))
+                    <div class="alert danger-alert">
+                        <ul>
+                            <li>{{ $errors->first('password') }}</li>
+                        </ul>
+                    </div>
+                    @endif
+
+                    @if ($errors->has('login'))
+                    <div class="alert danger-alert">
+                        <ul>
+                            @foreach ($errors->get('login') as $error)
+                            <li>{{ $error }}</li>
                             @endforeach
                         </ul>
                     </div>
                     @endif
 
                 </form>
-                <form action="" class="sign-up-form" method="POST">
+                <form action="{{ route('register') }}" class="sign-up-form" method="POST">
+                    @csrf
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email" />
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Username" />
+                        <input type="text" name="username" value="{{ old('username') }}" placeholder="Username" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" placeholder="Password" />
                     </div>
                     <input type="submit" value="Sign up" class="btn solid" />
+                    @if ($errors->register->any())
+                    <div class="alert danger-alert">
+                        <ul>
+                            @foreach ($errors->register->all() as $item)
+                            <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                 </form>
             </div>
         </div>

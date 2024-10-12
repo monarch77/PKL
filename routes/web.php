@@ -8,15 +8,17 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 //login
-Route::get('/', [SessionController::class, 'index']);
-Route::post('/', [SessionController::class, 'login']);
+Route::get('/', [SessionController::class, 'index'])->name('login');
+Route::get('/login', [SessionController::class, 'index'])->name('login');
+Route::post('/login', [SessionController::class, 'login']);
 
 //register
-Route::get('/register', [SessionController::class, 'indexRegister']);
+Route::get('/register', [SessionController::class, 'indexRegister'])->name('register');
+Route::post('/register', [SessionController::class, 'register']);
 
 //middleware
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboardadmin', action: [AdminController::class, 'index']);
+    Route::get('/dashboardadmin', [AdminController::class, 'index']);
 
 });
 
@@ -37,5 +39,5 @@ Route::get('/dashboarduser/klaim', function () {
 Route::get('/dashboarduser/ajukanklaim', [ClaimController::class, 'create']);
 
 //logout
-Route::get('/logout', [SessionController::class, 'logout']);
+Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
