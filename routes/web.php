@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\claimAdminController;
-use App\Http\Controllers\ClaimController;
-use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //login
@@ -12,31 +10,28 @@ Route::get('/', [SessionController::class, 'index'])->name('login');
 Route::get('/login', [SessionController::class, 'index'])->name('login');
 Route::post('/login', [SessionController::class, 'login']);
 
-//register
-Route::get('/register', [SessionController::class, 'indexRegister'])->name('register');
-Route::post('/register', [SessionController::class, 'register']);
+//signup
+Route::get('/signup', [SessionController::class, 'indexRegister'])->name('signup');
+Route::post('/signup', [SessionController::class, 'signup']);
 
 //middleware
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboardadmin', [AdminController::class, 'index']);
-
+    //profile
+    Route::get('profile/form', function() {
+        return view('register');
+    })->name('showProfileForm');
+    Route::post('/profile/complete', [SessionController::class, 'completeProfile'])->name('completeProfile');
+    //admin
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/profile', [AdminController::class, 'profile']);
+    Route::get('/admin/klaim', [AdminController::class, 'klaim']);
+    Route::get('/admin/laporan', [AdminController::class, 'laporan']);
+    
+    //user
+    Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/user/ajukanklaim', [UserController::class, 'ajukanklaim']);
+    Route::get('/user/klaim', [UserController::class, 'klaim'])->name('user.klaim');
 });
-
-//admin
-Route::get('/dashboardadmin/profile', [ProfileAdminController::class, 'profile']);
-Route::get('/dashboardadmin/klaim', [claimAdminController::class, 'klaim']);
-Route::get('/dashboardadmin/laporan', function () {
-    return view('admin/laporan');
-});
-
-//user
-Route::get('/dashboarduser', function () {
-    return view('user/dashboard');
-});
-Route::get('/dashboarduser/klaim', function () {
-    return view('user/klaim');
-});
-Route::get('/dashboarduser/ajukanklaim', [ClaimController::class, 'create']);
 
 //logout
 Route::get('/logout', [SessionController::class, 'logout'])->name('logout');

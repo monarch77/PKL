@@ -17,10 +17,10 @@
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <a href="/dashboarduser">
+                    <a href="/user/dashboard">
                         <img src="{{ asset('images/dashboard/Logo.png') }}" alt="logo">
                     </a>
-                    <a href="/dashboarduser">
+                    <a href="/user/dashboard">
                         <h2>Insura</h2>
                     </a>
                 </div>
@@ -32,19 +32,19 @@
             </div>
 
             <div class="sidebar">
-                <a href="/dashboarduser">
+                <a href="/user/dashboard">
                     <span class="material-symbols-outlined">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/dashboarduser/ajukanklaim">
+                <a href="/user/ajukanklaim">
                     <span class="material-symbols-outlined">
                         post_add
                     </span>
                     <h3>Ajukan Klaim</h3>
                 </a>
-                <a href="/dashboarduser/klaim">
+                <a href="/user/klaim">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
@@ -104,11 +104,11 @@
 
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Zeta</b></p>
-                        <small class="text-muted">User</small>
+                        <p>Hey, <b>{{ $user->username }}</b></p>
+                        <small class="text-muted">{{ $user->role }}</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="{{ asset('images/dashboard/profile.jpeg') }}" alt="Foto Profil">
+                        <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto Profil">
                     </div>
                 </div>
 

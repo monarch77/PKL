@@ -6,21 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
 class SessionController extends Controller
 {
-    function index (){
+    function index()
+    {
         return view('login');
     }
 
-    function login (Request $request){
+    function login(Request $request)
+    {
         $request->validate([
-            'email'=>'required',
-            'password'=>'required',
-        ],[
-            'email.required'=>'Email Wajib Diisi',
-            'password.required'=>'Password Wajib Diisi',
+            'email' => 'required',
+            'password' => 'required',
+        ], [
+            'email.required' => 'Email Wajib Diisi',
+            'password.required' => 'Password Wajib Diisi',
         ]);
 
         $infologin = [
@@ -28,22 +31,23 @@ class SessionController extends Controller
             'password' => $request->password,
         ];
 
-        if (Auth::attempt($infologin)){
-            if (Auth::user()->role == 'admin'){
-                return redirect('/dashboardadmin');
-            }else if (Auth::user()->role == 'user'){
-                return redirect('/dashboarduser');
+        if (Auth::attempt($infologin)) {
+            if (Auth::user()->role == 'admin') {
+                return redirect('/admin/dashboard');
+            } else if (Auth::user()->role == 'user') {
+                return redirect('/user/dashboard');
             }
-        }else{
+        } else {
             return redirect()->back()->withErrors(['login' => 'Username dan Password yang Dimasukkan Tidak Sesuai'])->withInput();
         }
     }
 
-    function indexRegister (){
+    function indexRegister()
+    {
         return view('register');
     }
 
-    function register(Request $request)
+    function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email',
@@ -56,22 +60,76 @@ class SessionController extends Controller
             'password.required' => 'Password Wajib Diisi',
             'password.min' => 'Password Minimal 6 Karakter',
         ]);
-        
+
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator, 'register')->withInput()->with('showRegister', true);
         }
 
-        User::create([
+        $user = User::create([
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('register')->with('success', 'Register Berhasil! Silahkan Login');
+        Auth::login($user);
+
+        Session::put('incomplete_profile', $user->id);
+
+        return redirect()->route('showProfileForm')->with('success', 'Register Berhasil! Silahkan Lengkapi Profile');
     }
 
-    function logout(){
+    function completeProfile(Request $request)
+    {
+        $request->validate([
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'phone_number' => 'required|numeric',
+            'gender' => 'required|in:Laki-laki,Perempuan',
+            'role' => 'required',
+        ]);
+
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $fileName = time() . '-' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('profile_picture', $fileName, 'public');
+
+            $user = Auth::user();
+            $user->profile_picture = $filePath;
+            $user->name = $request->name;
+            $user->address = $request->address;
+            $user->phone_number = $request->phone_number;
+            $user->gender = $request->gender;
+            $user->role = $request->role;
+            $user->save();
+
+            if (Auth::user()->role == 'admin') {
+                return redirect()->route('admin.dashboard')->with('success', 'Profile Berhasil Dilengkapi');
+            } elseif (Auth::user()->role == 'user') {
+                return redirect()->route('user.dashboard')->with('success', 'Profile Berhasil Dilengkapi');
+            }
+        }
+
+        return redirect('/')->with('error', 'Role tidak valid.');
+        
+        // $user = User::find(Session::get('incomplete_profile'));
+
+        // $user->update([
+        //     'profile_picture' => $request->file('profile_picture')->store('profile_picture'),
+        //     'name' => $request->name,
+        //     'address' => $request->address,
+        //     'phone_number' => $request->phone_number,
+        //     'gender' => $request->gender,
+        //     'role' => $request->role,
+        // ]);
+
+        // Session::forget('incomplete_profile');
+
+
+    }
+    function logout()
+    {
         Auth::logout();
         return redirect('/');
     }

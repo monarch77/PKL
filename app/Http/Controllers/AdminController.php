@@ -3,10 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     function index (){
-        return view('admin/dashboard');
+        $user = Auth::user();
+        return view(('admin.dashboard'), compact('user'));
+    }
+
+    public function klaim()
+    {
+        $user = Auth::user();
+        return view(('admin/klaim'), compact('user'));
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view(('admin/profile'), compact('user'));
+    }
+
+    public function laporan()
+    {
+        $user = Auth::user();
+        return view(('admin/laporan'), compact('user'));
     }
 }

@@ -54,7 +54,7 @@
                     @endif
 
                 </form>
-                <form action="{{ route('register') }}" class="sign-up-form" method="POST">
+                <form action="{{ route('signup') }}" class="sign-up-form" method="POST">
                     @csrf
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">

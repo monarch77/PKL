@@ -17,10 +17,10 @@
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <a href="/dashboardadmin">
+                    <a href="/admin/dashboard">
                         <img src="{{ asset('images/dashboard/Logo.png') }}" alt="logo">
                     </a>
-                    <a href="/dashboardadmin">
+                    <a href="/admin/dashboard">
                         <h2>Insura</h2>
                     </a>
                 </div>
@@ -32,25 +32,25 @@
             </div>
 
             <div class="sidebar">
-                <a href="/dashboardadmin">
+                <a href="/admin/dashboard">
                     <span class="material-symbols-outlined">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/dashboardadmin/profile">
+                <a href="/admin/profile">
                     <span class="material-symbols-outlined">
                         person_outline
                     </span>
                     <h3>Admin</h3>
                 </a>
-                <a href="/dashboardadmin/klaim">
+                <a href="/admin/klaim">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
                     <h3>Klaim</h3>
                 </a>
-                <a href="/dashboardadmin/laporan">
+                <a href="/admin/laporan">
                     <span class="material-symbols-outlined">
                         insights
                     </span>
@@ -104,11 +104,11 @@
 
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Zeta</b></p>
-                        <small class="text-muted">Admin</small>
+                        <p>Hey, <b>{{ $user->username }}</b></p>
+                        <small class="text-muted">{{ $user->role }}</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="{{ asset('images/dashboard/profile.jpeg') }}" alt="Foto Profil">
+                        <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto Profil">
                     </div>
                 </div>
 
