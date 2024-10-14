@@ -16,7 +16,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    
+     public function claims()
+     {
+            return $this->hasMany(Claim::class);
+     }
+     protected $fillable = [
         'username',
         'profile_picture',
         'address',

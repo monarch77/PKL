@@ -47,9 +47,5 @@ function formatRibuan(value) {
     return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
-form.addEventListener('submit', function(e) {
-    let value = nominalInput.value.replace(/\./g, ''); // Menghapus semua titik
-    nominalInput.value = value.replace('Rp. ', '');    // Menghapus simbol "Rp."
-});
 
 

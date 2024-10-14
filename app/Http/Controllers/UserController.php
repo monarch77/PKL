@@ -14,7 +14,8 @@ class UserController extends Controller
 
     function klaim (){
         $user = Auth::user();
-        return view(('user.klaim'), compact('user'));
+        $claims = $user->claims;
+        return view(('user.klaim'), compact('user', 'claims'));
     }
 
     function ajukanklaim (){

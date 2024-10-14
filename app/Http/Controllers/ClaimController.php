@@ -44,13 +44,16 @@ class ClaimController extends Controller
         $dokumenPaths = [];
         if ($request->hasFile('dokumen_pendukung')) {
             foreach ($request->file('dokumen_pendukung') as $file) {
-                $path = $file->store('dokumen_klaim');
+                $originalName = $file->getClientOriginalName();
+                $uniqueName = "Insura" . ' - ' . $originalName;
+                $path = $file->storeAs('dokumen_klaim', $uniqueName, 'public');
                 $dokumenPaths[] = $path;
             }
         }
         
         // Simpan Data ke Database
         Claim::create([
+            'user_id' => Auth::id(),
             'no_polis' => $validatedData['no_polis'],
             'name' => $validatedData['name'],
             'tanggal_lahir' => $validatedData['tanggal_lahir'],
@@ -73,8 +76,11 @@ class ClaimController extends Controller
             'tanggal_kejadian' => $validatedData['tanggal_kejadian'],
             'nominal_claim' => $nominalClaim,
             'deskripsi_kejadian' => $validatedData['deskripsi_kejadian'],
-            'dokumen_pendukung' => json_encode($dokumenPaths)
+            'dokumen_pendukung' => json_encode($dokumenPaths),
+            'status' => 'Menunggu'
         ]);
+
+
 
         return redirect()->route('user.dashboard')->with('success', 'Klaim Berhasil Diajukan');
     }

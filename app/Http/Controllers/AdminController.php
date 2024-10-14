@@ -15,18 +15,19 @@ class AdminController extends Controller
     public function klaim()
     {
         $user = Auth::user();
-        return view(('admin/klaim'), compact('user'));
+        $claims = $user->claims;
+        return view(('admin.klaim'), compact('user'));
     }
 
     public function profile()
     {
         $user = Auth::user();
-        return view(('admin/profile'), compact('user'));
+        return view(('admin.profile'), compact('user'));
     }
 
     public function laporan()
     {
         $user = Auth::user();
-        return view(('admin/laporan'), compact('user'));
+        return view(('admin.laporan'), compact('user'));
     }
 }

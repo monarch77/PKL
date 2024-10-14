@@ -10,6 +10,7 @@ class Claim extends Model
     use HasFactory;
     protected $table = 'claims';
     protected $fillable = [
+        'user_id',
         'no_polis',
         'name',
         'tanggal_lahir',
@@ -32,10 +33,7 @@ class Claim extends Model
         'tanggal_kejadian',
         'nominal_claim',
         'deskripsi_kejadian',
-        'dokumen_pendukung'
+        'dokumen_pendukung',
+        'status'
     ];
-
-    // protected $casts = [
-    //     'dokumen_pendukung' => 'array'
-    // ];
 }
