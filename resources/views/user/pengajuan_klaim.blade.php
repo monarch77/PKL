@@ -18,23 +18,28 @@
     <div class="container-1">
         <header>Pengajuan Klaim</header>
 
-        <form action="#">
+        <form action="{{ route('klaim.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="form first">
                 <div class="details">
                     <span class="title">Personal Details</span>
 
                     <div class="fields">
                         <div class="input-fields">
+                            <label>No. Polis</label>
+                            <input type="text" name="no_polis" placeholder="Masukkan No. Polis" required>
+                        </div>
+                        <div class="input-fields">
                             <label>Nama Lengkap</label>
-                            <input type="text" placeholder="Masukkan Nama Lengkap" required>
+                            <input type="text" name="name" placeholder="Masukkan Nama Lengkap" required>
                         </div>
                         <div class="input-fields">
                             <label>Tanggal Lahir</label>
-                            <input type="date" placeholder="Masukkan Tanggal Lahir" required>
+                            <input type="date" name="tanggal_lahir" placeholder="Masukkan Tanggal Lahir" required>
                         </div>
                         <div class="input-fields">
                             <label>No Telepon</label>
-                            <input type="number" placeholder="Masukkan No Telepon" required>
+                            <input type="number" name="no_hp" placeholder="Masukkan No Telepon" required>
                         </div>
                         <div class="input-fields">
                             <label for="gender">Jenis Kelamin</label>
@@ -46,11 +51,7 @@
                         </div>
                         <div class="input-fields">
                             <label>Pekerjaan</label>
-                            <input type="text" placeholder="Masukkan Pekerjaan" required>
-                        </div>
-                        <div class="input-fields">
-                            <label>Email</label>
-                            <input type="text" placeholder="Masukkan Email" required>
+                            <input type="text" name="pekerjaan" placeholder="Masukkan Pekerjaan" required>
                         </div>
                     </div>
 
@@ -62,7 +63,7 @@
                     <div class="fields">
                         <div class="input-fields">
                             <label>ID Type</label>
-                            <select id="id-type" name="id-type" required>
+                            <select id="id-type" name="id_type" required>
                                 <option value="" disabled selected>Pilih ID Type</option>
                                 <option value="KTP">KTP</option>
                                 <option value="Pasport">Pasport</option>
@@ -70,23 +71,23 @@
                         </div>
                         <div class="input-fields">
                             <label>ID Number</label>
-                            <input type="number" placeholder="Masukkan ID Number" required>
+                            <input type="number" name="id_number" placeholder="Masukkan ID Number" required>
                         </div>
                         <div class="input-fields">
                             <label>Issued Date</label>
-                            <input type="date" placeholder="Masukkan Issued Date" required>
+                            <input type="date" name="issued_date" placeholder="Masukkan Issued Date" required>
                         </div>
                         <div class="input-fields">
                             <label>Issued State</label>
-                            <input type="text" placeholder="Masukkan Issued State" required>
+                            <input type="text" name="issued_state" placeholder="Masukkan Issued State" required>
                         </div>
                         <div class="input-fields">
                             <label>Issued Authority</label>
-                            <input type="text" placeholder="Masukkan Issued Authority" required>
+                            <input type="text" name="issued_authority" placeholder="Masukkan Issued Authority" required>
                         </div>
                         <div class="input-fields">
-                            <label>Expiry Date</label>
-                            <input type="date" placeholder="Masukkan Expiry Date" required>
+                            <label>Expired Date</label>
+                            <input type="date" name="expired_date" placeholder="Masukkan Expiry Date" required>
                         </div>
                     </div>
 
@@ -95,6 +96,15 @@
                         <i class="uil uil-navigator"></i>
                     </button>
                 </div>
+                @if ($errors->any())
+                    <div class="alert danger-alert">
+                        <ul>
+                            @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
             </div>
 
             <div class="form second">
@@ -104,7 +114,7 @@
                     <div class="fields">
                         <div class="input-fields">
                             <label>Address Type</label>
-                            <select id="address-type" name="address-type" required>
+                            <select id="address-type" name="address_type" required>
                                 <option value="" disabled selected>Pilih Address Type</option>
                                 <option value="Permanent">Permanent</option>
                                 <option value="Temporary">Temporary</option>
@@ -112,23 +122,23 @@
                         </div>
                         <div class="input-fields">
                             <label>Provinsi</label>
-                            <input type="text" placeholder="Masukkan Provinsi" required>
+                            <input type="text" name="provinsi" placeholder="Masukkan Provinsi" required>
                         </div>
                         <div class="input-fields">
                             <label>Kota/Kabupaten</label>
-                            <input type="text" placeholder="Masukkan Kota/Kabupaten" required>
+                            <input type="text" name="kota_kabupaten" placeholder="Masukkan Kota/Kabupaten" required>
                         </div>
                         <div class="input-fields">
                             <label>Kecamatan/Kelurahan</label>
-                            <input type="text" placeholder="Masukkan Kecamatan/kelurahan" required>
+                            <input type="text" name="kecamatan_kelurahan" placeholder="Masukkan Kecamatan/kelurahan" required>
                         </div>
                         <div class="input-fields">
                             <label>RT/RW</label>
-                            <input type="text" placeholder="Masukkan RT/RW" required>
+                            <input type="text" name="rt_rw" placeholder="Masukkan RT/RW" required>
                         </div>
                         <div class="input-fields">
-                            <label>No. Rumah</label>
-                            <input type="number" placeholder="Masukkan No. Rumah" required>
+                            <label>Kode Pos</label>
+                            <input type="number" name="kode_pos" placeholder="Masukkan Kode Pos" required>
                         </div>
                     </div>
 
@@ -140,28 +150,28 @@
                     <div class="fields">
                         <div class="input-fields">
                             <label>Jenis Klaim</label>
-                            <select id="claim-type" name="claim-type" required>
+                            <select id="claim-type" name="claim_type" required>
                                 <option value="" disabled selected>Pilih Jenis Klaim</option>
-                                <option value="kesehatan">Kesehatan</option>
-                                <option value="kecelakaan">Kecelakaan</option>
-                                <option value="properti">Kerusakan Properti</option>
+                                <option value="Kesehatan">Kesehatan</option>
+                                <option value="Kecelakaan">Kecelakaan</option>
+                                <option value="Properti">Kerusakan Properti</option>
                             </select>
                         </div>
                         <div class="input-fields">
                             <label>Tanggal Kejadian</label>
-                            <input type="date" placeholder="Masukkan Tanggal Kejadian" required>
+                            <input type="date" name="tanggal_kejadian" placeholder="Masukkan Tanggal Kejadian" required>
                         </div>
                         <div class="input-fields">
                             <label>Nominal Klaim</label>
-                            <input type="text" id="nominal-klaim" placeholder="Masukkan Nominal Klaim" required>
+                            <input type="text" name="nominal_claim" id="nominal-klaim" placeholder="Masukkan Nominal Klaim" required>
                         </div>
                         <div class="input-fields deskripsi">
                             <label>Deskripsi Singkat Kejadian</label>
-                            <textarea placeholder="Masukkan Deskripsi Singkat" required></textarea>
+                            <textarea name="deskripsi_kejadian" placeholder="Masukkan Deskripsi Singkat" required></textarea>
                         </div>
                         <div class="input-fields dokumen">
                             <label>Dokumen Pendukung</label>
-                            <input type="file" accept=".jpg, .jpeg, .png, .pdf" multiple required>
+                            <input type="file" name="dokumen_pendukung[]" accept=".jpg, .jpeg, .png, .pdf" multiple required>
                         </div>
                     </div>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClaimController;
 use Illuminate\Support\Facades\Route;
 
 //login
@@ -30,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     //user
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/user/ajukanklaim', [UserController::class, 'ajukanklaim']);
+    Route::post('/user/ajukanklaim', [ClaimController::class, 'store'])->name('klaim.store');
     Route::get('/user/klaim', [UserController::class, 'klaim'])->name('user.klaim');
 });
 
