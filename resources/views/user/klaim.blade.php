@@ -69,7 +69,7 @@
                         </span>
                     </td>
                     <td>
-                        <a href="#edit" class="edit">
+                        <a href="{{ route('klaim.edit', $claim->id) }}" class="edit">
                             <i class="fas fa-pen-to-square fa-lg"></i>
                         </a>
                         <form action="{{ route('klaim.destroy', $claim->id) }}" method="POST" class="delete-form">
