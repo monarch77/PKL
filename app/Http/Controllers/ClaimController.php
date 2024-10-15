@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Claim;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ClaimController extends Controller
 {
@@ -83,5 +84,21 @@ class ClaimController extends Controller
 
 
         return redirect()->route('user.dashboard')->with('success', 'Klaim Berhasil Diajukan');
+    }
+
+    public function destroy($id)
+    {
+        $claim = Claim::findOrFail($id);
+
+        if ($claim->dokumen_pendukung) {
+            $dokumen_pendukung = json_decode($claim->dokumen_pendukung);
+            foreach ($dokumen_pendukung as $dokumen) {
+                Storage::delete('public/' . $dokumen);
+            }
+        }
+        
+        $claim->delete();
+
+        return redirect()->route('user.klaim')->with('success', 'Klaim Berhasil Dihapus');
     }
 }

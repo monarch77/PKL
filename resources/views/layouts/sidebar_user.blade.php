@@ -68,7 +68,7 @@
                     </span>
                     <h3>Bantuan</h3>
                 </a>
-                <a href="/logout">
+                <a href="/logout" class="logout-link">
                     <span class="material-symbols-outlined">
                         logout
                     </span>
@@ -116,6 +116,7 @@
             <!-- End of Nav -->
         </div>
         <script src="{{ asset('js/dashboard/index.js') }}"></script>
+        <script src="{{ asset('js/alert.js') }}"></script>
     </div>
 </body>
 

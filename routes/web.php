@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/ajukanklaim', [UserController::class, 'ajukanklaim']);
     Route::post('/user/ajukanklaim', [ClaimController::class, 'store'])->name('klaim.store');
     Route::get('/user/klaim', [UserController::class, 'klaim'])->name('user.klaim');
+    Route::delete('/user/klaim/{id}', [ClaimController::class, 'destroy'])->name('klaim.destroy');
 });
 
 //logout

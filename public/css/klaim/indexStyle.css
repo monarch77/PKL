@@ -65,13 +65,20 @@ td{
     color: grey;
 }
 
-.edit {
-    color: grey;
-    margin-right: 10px;
+.file-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
-.delete {
+.file-container i {
+    margin-right: 8px;
+}
+
+.edit, .delete {
     color: grey;
+    margin-right: 10px;
 }
 
 .edit:hover, .delete:hover {
@@ -85,6 +92,16 @@ td{
 
 .delete:hover {
     color: red;
+}
+
+.delete-form{
+    display: inline;
+}
+
+.delete {
+    border:none; 
+    background:none; 
+    cursor:pointer;
 }
 
 .status {

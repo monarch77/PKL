@@ -35,25 +35,29 @@
             <tbody>
                 @foreach($claims as $claim)
                 <tr>
-                    <td>{{ $claim->no_polis }}</td>
+                    <td>
+                        <a href="#" class="show-claim-modal">{{ $claim->no_polis }}</a>
+                    </td>
                     <td>{{ $claim->name }}</td>
                     <td>{{ $claim->claim_type }}</td>
                     <td>Rp. {{ number_format($claim->nominal_claim, 0, ',', '.') }}</td>
                     <td>
-                        @foreach(json_decode($claim->dokumen_pendukung) as $dokumen)
+                        <div class="file-container">
+                            @foreach(json_decode($claim->dokumen_pendukung) as $dokumen)
                             @php
-                                $extension = pathinfo($dokumen, PATHINFO_EXTENSION);
+                            $extension = pathinfo($dokumen, PATHINFO_EXTENSION);
                             @endphp
                             <a href="{{ asset('storage/' . $dokumen) }}" class="file" target="_blank">
                                 @if($extension == 'pdf')
-                                    <i class="fas fa-file-pdf fa-lg"></i>
+                                <i class="fas fa-file-pdf fa-lg"></i>
                                 @elseif($extension == 'docx' || $extension == 'doc')
-                                    <i class="fas fa-file-word fa-lg"></i>
+                                <i class="fas fa-file-word fa-lg"></i>
                                 @elseif(in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
-                                    <i class="fas fa-file-image fa-lg"></i>
+                                <i class="fas fa-file-image fa-lg"></i>
                             </a><br>
-                                @endif
-                        @endforeach
+                            @endif
+                            @endforeach
+                        </div>
                     </td>
                     <td>
                         <span class="status
@@ -68,9 +72,13 @@
                         <a href="#edit" class="edit">
                             <i class="fas fa-pen-to-square fa-lg"></i>
                         </a>
-                        <a href="#delete" class="delete">
-                            <i class="fas fa-trash fa-lg"></i>
-                        </a>
+                        <form action="{{ route('klaim.destroy', $claim->id) }}" method="POST" class="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete">
+                                <i class="fas fa-trash fa-lg"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -78,7 +86,8 @@
         </table>
         @endif
     </div>
-
+    
+    <script src="{{ asset('js/alert.js') }}"></script>
 </body>
 
 </html>
