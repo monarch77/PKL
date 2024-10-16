@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/klaim/indexStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/klaim/indexStyle.css') }}"> <!-- Tampilan Klaim -->
+    <link rel="stylesheet" href="{{ asset('css/modal/style.css') }}"> <!-- Modal View -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -36,7 +37,31 @@
                 @foreach($claims as $claim)
                 <tr>
                     <td>
-                        <a href="#" class="show-claim-modal">{{ $claim->no_polis }}</a>
+                        <a href="" class="show-claim-modal"
+                            data-id="{{ $claim->id }}"
+                            data-polis="{{ $claim->no_polis }}"
+                            data-nama="{{ $claim->name }}"
+                            data-tanggal-lahir="{{ $claim->tanggal_lahir }}"
+                            data-no-hp="{{ $claim->no_hp }}"
+                            data-gender="{{ $claim->gender }}"
+                            data-pekerjaan="{{ $claim->pekerjaan }}"
+                            data-id-type="{{ $claim->id_type }}"
+                            data-id-number="{{ $claim->id_number }}"
+                            data-issued-date="{{ $claim->issued_date }}"
+                            data-issued-authority="{{ $claim->issued_authority }}"
+                            data-expired-date="{{ $claim->expired_date }}"
+                            data-address-type="{{ $claim->address_type }}"
+                            data-provinsi="{{ $claim->provinsi }}"
+                            data-kota-kabupaten="{{ $claim->kota_kabupaten }}"
+                            data-kecamatan-kelurahan="{{ $claim->kecamatan_kelurahan }}"
+                            data-rt-rw="{{ $claim->rt_rw }}"
+                            data-kode-pos="{{ $claim->kode_pos }}"
+                            data-claim-type="{{ $claim->claim_type }}"
+                            data-tanggal-kejadian="{{ $claim->tanggal_kejadian }}"
+                            data-nominal="{{ $claim->nominal_claim }}"
+                            data-deskripsi="{{ $claim->deskripsi_kejadian }}">
+                            {{ $claim->no_polis }}
+                        </a>
                     </td>
                     <td>{{ $claim->name }}</td>
                     <td>{{ $claim->claim_type }}</td>
@@ -69,6 +94,9 @@
                         </span>
                     </td>
                     <td>
+                        <a href="#" class="edit">
+                            <i class="fas fa-pen-to-square fa-lg"></i>
+                        </a>
                         <a href="{{ route('klaim.edit', $claim->id) }}" class="edit">
                             <i class="fas fa-pen-to-square fa-lg"></i>
                         </a>
@@ -86,9 +114,11 @@
         </table>
         @endif
     </div>
-    
-    <script src="{{ asset('js/alert.js') }}"></script>
+
+    <script src="{{ asset('js/modal/index.js') }}"></script>
 </body>
 
 </html>
+@include('user.modal.index')
+<!-- @include('user.modal.edit') -->
 @endsection
