@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/ajukanklaim', [ClaimController::class, 'store'])->name('klaim.store');
     Route::get('/user/klaim', [UserController::class, 'klaim'])->name('user.klaim');
     Route::get('/user/klaim/{id}/edit', [ClaimController::class, 'edit'])->name('klaim.edit');
-    Route::post('/user/klaim/{id}/update', [ClaimController::class, 'update'])->name('klaim.update');
+    Route::post('/user/klaim/update/{id}', [ClaimController::class, 'update'])->name('klaim.update');
     Route::delete('/user/klaim/{id}', [ClaimController::class, 'destroy'])->name('klaim.destroy');
 });
 
