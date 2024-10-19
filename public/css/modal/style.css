@@ -167,7 +167,7 @@
 }
 
 
-/* textarea {
+textarea {
     width: 100%; 
     height: 70px; 
     padding: 10px;
@@ -210,13 +210,57 @@ form .buttons {
     margin: 25px 0;
 }
 
-form button:hover {
+/* form button:hover {
     background-color: #3358f4;
-}
+} */
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-} */
+}
+
+/* Gaya dasar untuk input file */
+input[type="file"] {
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 2px solid #b0c4de;
+    border-radius: 3px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Mengatur gaya tombol upload dengan warna biru */
+input[type="file"]::-webkit-file-upload-button {
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efek hover pada tombol */
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #1C86EE;
+}
+
+/* Efek saat tombol ditekan */
+input[type="file"]::-webkit-file-upload-button:active {
+    background-color: #1874CD;
+}
+
+/* Fokus pada input file */
+input[type="file"]:focus {
+    border-color: #1E90FF;
+}
+
+
 
