@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var kode_pos = this.getAttribute("data-kode-pos");
             var claim_type = this.getAttribute("data-claim-type");
             var tanggal_kejadian = this.getAttribute("data-tanggal-kejadian");
-            var nominal_claim = this.getAttribute("data-nominal");
+            var nominal_claim = this.getAttribute("data-nominal-claim");
             var deskripsi = this.getAttribute("data-deskripsi");
 
             document.getElementById("modal-no-polis").innerText = polis;
@@ -55,13 +55,56 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    closeModalBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
+    function closeModalWithAnimation() {
+        modal.classList.add("fade-out");
+        setTimeout(() => {
+            modal.style.display = "none";
+            modal.classList.remove("fade-out");
+        }, 300);
+    }
+
+    closeModalBtn.addEventListener("click", closeModalWithAnimation);
 
     window.addEventListener("click", function (event) {
         if (event.target === modal) {
-            modal.style.display = "none";
+            closeModalWithAnimation();
         }
     });
+});
+
+//download klaim ke xls
+document.getElementById('download-claim').addEventListener('click', function() {
+
+    var noPolis = document.getElementById('modal-no-polis').innerText;
+    var claimData = {
+        "No Polis": noPolis,
+        "Nama": document.getElementById('modal-nama').innerText,
+        "Tanggal Lahir": document.getElementById('modal-tanggal-lahir').innerText,
+        "No HP": document.getElementById('modal-no-hp').innerText,
+        "Jenis Kelamin": document.getElementById('modal-gender').innerText,
+        "Pekerjaan": document.getElementById('modal-pekerjaan').innerText,
+        "ID Type": document.getElementById('modal-id-type').innerText,
+        "ID Number": document.getElementById('modal-id-number').innerText,
+        "Issued Date": document.getElementById('modal-issued-date').innerText,
+        "Issued Authority": document.getElementById('modal-issued-authority').innerText,
+        "Expired Date": document.getElementById('modal-expired-date').innerText,
+        "Address Type": document.getElementById('modal-address-type').innerText,
+        "Provinsi": document.getElementById('modal-provinsi').innerText,
+        "Kota/Kabupaten": document.getElementById('modal-kota-kabupaten').innerText,
+        "Kecamatan/Kelurahan": document.getElementById('modal-kecamatan-kelurahan').innerText,
+        "RT/RW": document.getElementById('modal-rt-rw').innerText,
+        "Kode Pos": document.getElementById('modal-kode-pos').innerText,
+        "Jenis Klaim": document.getElementById('modal-claim-type').innerText,
+        "Tanggal Kejadian": document.getElementById('modal-tanggal-kejadian').innerText,
+        "Nominal Klaim": document.getElementById('modal-nominal-klaim').innerText,
+        "Deskripsi Kejadian": document.getElementById('modal-deskripsi').innerText
+    };
+
+    var wb = XLSX.utils.book_new();  
+    var ws = XLSX.utils.json_to_sheet([claimData]);  
+    var fileName = "Klaim - " + noPolis + ".xlsx";
+
+    XLSX.utils.book_append_sheet(wb, ws, "Klaim Data");
+
+    XLSX.writeFile(wb, fileName);
 });

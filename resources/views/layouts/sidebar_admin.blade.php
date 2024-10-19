@@ -115,8 +115,10 @@
             </div>
             <!-- End of Nav -->
         </div>
-        <script src="{{ asset('js/dashboard/index.js') }}"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
         <script src="{{ asset('js/alert.js') }}"></script>
+        <script src="{{ asset('js/dashboard/index.js') }}"></script>
 </body>
 
 </html>

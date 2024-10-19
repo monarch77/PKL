@@ -25,7 +25,7 @@ backBtn.addEventListener('click', () => {
 });
 
 //script rp dan pemisah ribuan
-const nominalInput = document.getElementById('nominal-klaim');
+const nominalInput = document.getElementById('nominal-claim');
 
 nominalInput.addEventListener('focus', function() {
     if (!nominalInput.value.startsWith('Rp.')) {

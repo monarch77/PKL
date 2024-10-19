@@ -1,4 +1,3 @@
-<!-- Modal untuk Menampilkan Data Klaim -->
 <div id="claimModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -28,5 +27,9 @@
             <p><strong>Nominal Klaim:</strong> <span id="modal-nominal-klaim"></span></p>
             <p><strong>Deskripsi Kejadian:</strong> <span id="modal-deskripsi"></span></p>
         </div>
+        <div class="modal-footer">
+            <button id="download-claim" class="buttons">Download as XLS</button>
+        </div>
     </div>
 </div>
+<script src="{{ asset('js/modal/index.js') }}"></script>
