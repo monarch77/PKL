@@ -159,7 +159,7 @@ class ClaimController extends Controller
         }
 
         $claim->save();
-        return redirect()->route('user.klaim')->with('success', 'Klaim Berhasil Diperbarui');
+        return redirect()->route('user.klaim')->with('edit_success', 'Klaim Berhasil Diperbarui');
     }
     public function destroy($id)
     {
@@ -174,6 +174,6 @@ class ClaimController extends Controller
         
         $claim->delete();
 
-        return redirect()->route('user.klaim')->with('success', 'Klaim Berhasil Dihapus');
+        return redirect()->route('user.klaim')->with('delete_success', 'Klaim Berhasil Dihapus');
     }
 }
