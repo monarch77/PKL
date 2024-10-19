@@ -28,7 +28,10 @@
             <p><strong>Deskripsi Kejadian:</strong> <span id="modal-deskripsi"></span></p>
         </div>
         <div class="modal-footer">
-            <button id="download-claim" class="buttons">Download as XLS</button>
+            <button id="download-claim" class="buttons">
+                <i class="fas fa-file-excel fa-lg"></i>
+                Download as XLS
+            </button>
         </div>
     </div>
 </div>
