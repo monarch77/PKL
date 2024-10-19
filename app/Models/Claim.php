@@ -36,4 +36,9 @@ class Claim extends Model
         'dokumen_pendukung',
         'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -12,7 +12,7 @@ class ClaimController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'no_polis'=> 'required|numeric',
+            'no_polis' => 'required|numeric',
             'name' => 'required|string',
             'tanggal_lahir' => 'required|date',
             'no_hp' => 'required|numeric',
@@ -51,7 +51,7 @@ class ClaimController extends Controller
                 $dokumenPaths[] = $path;
             }
         }
-        
+
         // Simpan Data ke Database
         Claim::create([
             'user_id' => Auth::id(),
@@ -100,7 +100,7 @@ class ClaimController extends Controller
         $claim = Claim::findOrFail($id);
 
         $validatedData = $request->validate([
-            'no_polis'=> 'required',
+            'no_polis' => 'required',
             'name' => 'required',
             'tanggal_lahir' => 'required',
             'no_hp' => 'required',
@@ -125,7 +125,7 @@ class ClaimController extends Controller
             'dokumen_pendukung' => 'array',
             'dokumen_pendukung.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
         ]);
-        
+
         $claim->no_polis = $request->no_polis;
         $claim->name = $request->name;
         $claim->tanggal_lahir = $request->tanggal_lahir;
@@ -150,6 +150,15 @@ class ClaimController extends Controller
         $claim->deskripsi_kejadian = $request->deskripsi_kejadian;
 
         if ($request->hasFile('dokumen_pendukung')) {
+            // Hapus dokumen lama jika ada
+            if (!empty($claim->dokumen_pendukung)) {
+                $oldDokumen = json_decode($claim->dokumen_pendukung);
+                foreach ($oldDokumen as $oldFilePath) {
+                    Storage::disk('public')->delete($oldFilePath);
+                }
+            }
+
+            // Simpan dokumen baru
             $dokumenPaths = [];
             foreach ($request->file('dokumen_pendukung') as $file) {
                 $path = $file->store('dokumen_klaim', 'public');
@@ -171,7 +180,7 @@ class ClaimController extends Controller
                 Storage::delete('public/' . $dokumen);
             }
         }
-        
+
         $claim->delete();
 
         return redirect()->route('user.klaim')->with('delete_success', 'Klaim Berhasil Dihapus');

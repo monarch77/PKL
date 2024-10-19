@@ -2,6 +2,9 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    overflow-y: auto;
+    margin-bottom: 50px;
 }
 
 main{
@@ -10,11 +13,11 @@ main{
 
 .container-1{
     position: relative;
-    max-width: 900px;
+    max-width: 940px;
     width: 100%;
     border-radius: 6px;
     padding: 30px;
-    margin: 51px 15px 0px 15px;
+    margin: 51px 0px 0px 15px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
@@ -126,3 +129,21 @@ td{
     background-color: #d9534f;
     color: white;
 }
+
+.btn-approve,
+.btn-reject {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-approve {
+    background-color: #28a745; /* Hijau untuk setujui */
+}
+
+.btn-reject {
+    background-color: #dc3545; /* Merah untuk tolak */
+}
+

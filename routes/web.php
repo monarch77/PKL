@@ -25,7 +25,9 @@ Route::middleware(['auth'])->group(function () {
     //admin
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile']);
-    Route::get('/admin/klaim', [AdminController::class, 'klaim']);
+    Route::get('/admin/klaim', [AdminController::class, 'showAllClaims'])
+    ->name('admin.klaim');
+    Route::patch('/admin/klaim/{id}', [AdminController::class, 'update'])->name('admin.klaim.update');
     Route::get('/admin/laporan', [AdminController::class, 'laporan']);
     
     //user
@@ -34,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/ajukanklaim', [ClaimController::class, 'store'])->name('klaim.store');
     Route::get('/user/klaim', [UserController::class, 'klaim'])->name('user.klaim');
     Route::get('/user/klaim/{id}/edit', [ClaimController::class, 'edit'])->name('klaim.edit');
-    Route::post('/user/klaim/update/{id}', [ClaimController::class, 'update'])->name('klaim.update');
+    Route::put('/user/klaim/{id}', [ClaimController::class, 'update'])->name('klaim.update');
     Route::delete('/user/klaim/{id}', [ClaimController::class, 'destroy'])->name('klaim.destroy');
 });
 
