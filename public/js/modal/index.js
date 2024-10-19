@@ -1,3 +1,4 @@
+//view modal
 document.addEventListener("DOMContentLoaded", function () {
     var modal = document.getElementById("claimModal");
     var closeModalBtn = document.getElementById("closeModal");
