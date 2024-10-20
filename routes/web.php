@@ -17,16 +17,18 @@ Route::post('/signup', [SessionController::class, 'signup']);
 
 //middleware
 Route::middleware(['auth'])->group(function () {
+
     //profile
     Route::get('profile/form', function() {
         return view('register');
     })->name('showProfileForm');
     Route::post('/profile/complete', [SessionController::class, 'completeProfile'])->name('completeProfile');
+
     //admin
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/profile', [AdminController::class, 'profile']);
-    Route::get('/admin/klaim', [AdminController::class, 'showAllClaims'])
-    ->name('admin.klaim');
+    Route::get('/admin/akun', [AdminController::class, 'indexUser'])->name('admin.akun');
+    Route::delete('/admin/akun/{id}', [AdminController::class, 'deleteUser'])->name('admin.akun.delete');
+    Route::get('/admin/klaim', [AdminController::class, 'showAllClaims'])->name('admin.klaim');
     Route::patch('/admin/klaim/{id}', [AdminController::class, 'update'])->name('admin.klaim.update');
     Route::get('/admin/laporan', [AdminController::class, 'laporan']);
     

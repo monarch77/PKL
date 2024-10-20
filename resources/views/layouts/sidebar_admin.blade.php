@@ -41,17 +41,17 @@
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/admin/profile">
-                    <span class="material-symbols-outlined">
-                        person_outline
-                    </span>
-                    <h3>Profile</h3>
-                </a>
                 <a href="/admin/klaim">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
                     <h3>Klaim</h3>
+                </a>
+                <a href="/admin/akun">
+                    <span class="material-symbols-outlined">
+                        person_outline
+                    </span>
+                    <h3>Akun</h3>
                 </a>
                 <a href="/admin/laporan">
                     <span class="material-symbols-outlined">

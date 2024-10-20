@@ -23,6 +23,7 @@
             <div class="modal-body">
                 <form action="{{ route('klaim.update', $claim->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="no_polis">No Polis</label>
                         <input type="text" name="no_polis" value="{{ $claim->no_polis }}" class="form-control" required>

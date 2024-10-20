@@ -97,7 +97,7 @@ td{
     color: red;
 }
 
-.delete-form{
+.delete-form, .delete-akun{
     display: inline;
 }
 

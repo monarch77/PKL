@@ -88,6 +88,17 @@ class SessionController extends Controller
             'phone_number' => 'required|numeric',
             'gender' => 'required|in:Laki-laki,Perempuan',
             'role' => 'required',
+        ], [
+            'profile_picture.required' => 'Foto Profil Wajib Diisi',
+            'profile_picture.image' => 'Foto Profil Harus Berupa Gambar',
+            'profile_picture.mimes' => 'Foto Profil Harus Berupa Gambar dengan Format jpeg, png, jpg, gif, svg',
+            'profile_picture.max' => 'Ukuran Foto Profil Maksimal 2MB',
+            'name.required' => 'Nama Wajib Diisi',
+            'name.string' => 'Nama Harus Berupa Huruf',
+            'address.required' => 'Alamat Wajib Diisi',
+            'address.string' => 'Alamat Harus Berupa Huruf',
+            'phone_number.required' => 'Nomor Telepon Wajib Diisi',
+            'phone_number.numeric' => 'Nomor Telepon Harus Berupa Angka',
         ]);
 
         if ($request->hasFile('profile_picture')) {

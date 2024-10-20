@@ -58,6 +58,16 @@
                 <button class="submitBtn">
                     <span class="btnText">Submit</span>
                 </button>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                
+                @endif
 
             </div>
 
