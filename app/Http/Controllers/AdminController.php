@@ -46,8 +46,9 @@ class AdminController extends Controller
 
     public function editUser($id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.akun', compact('user'));
+        $user = Auth::user();
+        $users = User::where('role', 'user')->findOrFail($id);
+        return view('admin.akun', compact('user', 'users'));
     }
 
     public function updateUser(Request $request, $id)
@@ -55,12 +56,14 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $request->validate([
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'role' => 'required',
             'status' => 'required'
         ]);
 
         $user->name = $request->name;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->role = $request->role;
         $user->status = $request->status;
@@ -74,7 +77,7 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('admin.akun')->with('success', 'Data User Berhasil Dihapus');
+        return redirect()->route('admin.akun')->with('delete_success', 'Data User Berhasil Dihapus');
     }
 
     public function laporan()

@@ -79,7 +79,7 @@ td{
     margin-right: 8px;
 }
 
-.edit, .delete {
+.edit, .delete, .delete-akun {
     color: grey;
     margin-right: 10px;
 }
@@ -93,11 +93,15 @@ td{
     color: blue;
 }
 
-.delete:hover {
+.delete:hover, .delete-akun:hover {
     color: red;
 }
 
-.delete-form, .delete-akun{
+.delete-form{
+    display: inline;
+}
+
+.delete-akun {
     display: inline;
 }
 
@@ -115,7 +119,7 @@ td{
     display: inline-block;
 }
 
-.status.menunggu {
+.status.menunggu, .status.diproses {
     background-color: #f0ad4e;
     color: white;
 }

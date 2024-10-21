@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     //admin
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/akun', [AdminController::class, 'indexUser'])->name('admin.akun');
+    Route::get('/admin/akun/{id}/edit', [AdminController::class, 'editUser'])->name('admin.akun.edit');
+    Route::post('/admin/akun/{id}', [AdminController::class, 'updateUser'])->name('admin.akun.update');
     Route::delete('/admin/akun/{id}', [AdminController::class, 'deleteUser'])->name('admin.akun.delete');
     Route::get('/admin/klaim', [AdminController::class, 'showAllClaims'])->name('admin.klaim');
     Route::patch('/admin/klaim/{id}', [AdminController::class, 'update'])->name('admin.klaim.update');

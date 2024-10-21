@@ -35,27 +35,66 @@
                         @if ($pengguna->status == 'Aktif') aktif
                         @elseif ($pengguna->status == 'Tidak Aktif') tidak-aktif
                         @endif">
-                        {{ $pengguna->status }}</td>
-                    </span>
+                        {{ $pengguna->status }}
+                </td>
+                </span>
                 <td>
-                    <a href="#" method="POST" class="button-edit">
+                    <a href="{{ route('admin.akun.edit', $pengguna->id) }}" class="edit"
+                        data-nama="{{ $pengguna->name }}"
+                        data-username="{{ $pengguna->username }}"
+                        data-email="{{ $pengguna->email }}"
+                        data-role="{{ $pengguna->role }}"
+                        data-status="{{ $pengguna->status }}">
+
                         Edit
                     </a>
                     <form action="{{ route('admin.akun.delete', $pengguna->id) }}" method="POST" class="delete-akun">
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="delete">
+                        <button type="submit" class="delete-button">
                             Delete
                         </button>
                     </form>
-                    
+
                 </td>
             </tr>
-            
+
             @endforeach
         </tbody>
     </table>
 </div>
 
+@if (session('delete_success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session("delete_success") }}',
+            customClass: {
+                popup: 'custom-toast toast-delete'
+            }
+        });
+    });
+</script>
+@endif
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script src="{{ asset('js/alert.js') }}"></script>
+<script src="{{ asset('js/modal/admin/edit.js') }}"></script>
+
+
+@include('admin.modal.edit')
 @endsection
