@@ -16,6 +16,7 @@
         <thead>
             <tr>
                 <th>Nama</th>
+                <th>Username</th>
                 <th>Email</th>
                 <th>Role</th>
                 <th>Status</th>
@@ -26,9 +27,16 @@
             @foreach ($users as $pengguna)
             <tr>
                 <td>{{ $pengguna->name }}</td>
+                <td>{{ $pengguna->username }}</td>
                 <td>{{ $pengguna->email }}</td>
                 <td>{{ $pengguna->role }}</td>
-                <td>{{ $pengguna->status }}</td>
+                <td>
+                    <span class="status 
+                        @if ($pengguna->status == 'Aktif') aktif
+                        @elseif ($pengguna->status == 'Tidak Aktif') tidak-aktif
+                        @endif">
+                        {{ $pengguna->status }}</td>
+                    </span>
                 <td>
                     <a href="#" method="POST" class="button-edit">
                         Edit

@@ -9,7 +9,8 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    function index (){
+    function index()
+    {
         $user = Auth::user();
         return view(('admin.dashboard'), compact('user'));
     }
@@ -40,7 +41,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $users = User::where('role', '!=', 'admin')->get();
-        return view('admin.akun', compact( 'user', 'users'));
+        return view('admin.akun', compact('user', 'users'));
     }
 
     public function editUser($id)
@@ -70,8 +71,8 @@ class AdminController extends Controller
 
     public function deleteUser($id)
     {
-        $users = User::findOrFail($id);
-        $users->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
 
         return redirect()->route('admin.akun')->with('success', 'Data User Berhasil Dihapus');
     }

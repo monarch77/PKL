@@ -32,6 +32,11 @@ class SessionController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
+            if (Auth::user()->status !== 'Aktif') {
+                Auth::logout();
+                return redirect()->back()->withErrors(['login' => 'Akun Anda tidak aktif, silahkan hubungi Administrator'])->withInput();
+            }
+            
             if (Auth::user()->role == 'admin') {
                 return redirect('/admin/dashboard');
             } else if (Auth::user()->role == 'user') {
