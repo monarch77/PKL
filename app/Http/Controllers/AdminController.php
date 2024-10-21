@@ -49,7 +49,8 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $users = User::where('role', 'user')->findOrFail($id);
-        return view('admin.akun', compact('user', 'users'));
+        $pengguna = User::where('role', 'user')->findOrFail($id);
+        return view('admin.edit', compact('user', 'users', 'pengguna'));
     }
 
     public function updateUser(Request $request, $id)
@@ -70,7 +71,7 @@ class AdminController extends Controller
         $user->status = $request->status;
         $user->save();
 
-        return redirect()->route('admin.akun')->with('success', 'Data User Berhasil Diperbarui');
+        return redirect()->route('admin.akun')->with('edit_success', 'Data User Berhasil Diperbarui');
     }
 
     public function deleteUser($id)

@@ -51,11 +51,13 @@
                 </td>
                 <td>
                     <a href="{{ route('admin.akun.edit', $pengguna->id) }}" class="edit-akun"
+                        data-id="{{ $pengguna->id }}"
                         data-nama="{{ $pengguna->name }}"
                         data-username="{{ $pengguna->username }}"
                         data-email="{{ $pengguna->email }}"
                         data-role="{{ $pengguna->role }}"
-                        data-status="{{ $pengguna->status }}">
+                        data-status="{{ $pengguna->status }}"
+                        data-toggle="modal" data-target="#editModal">
 
                         <button type="submit" class="btn-edit">
                             Edit
@@ -79,6 +81,32 @@
     @endif
 
 </div>
+
+@if (session('edit_success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            customClass: {
+                popup: 'custom-toast toast-edit'
+            },
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session("edit_success") }}'
+        });
+    });
+</script>
+@endif
 
 @if (session('delete_success'))
 <script>
@@ -108,7 +136,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script src="{{ asset('js/alert.js') }}"></script>
-<script src="{{ asset('js/modal/admin/edit.js') }}"></script>
+<!-- <script src="{{ asset('js/modal/admin/edit.js') }}"></script> -->
 
 
 @include('admin.modal.edit')

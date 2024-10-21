@@ -17,7 +17,7 @@
     <div class="modal" id="editModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Edit Klaim</h2>
+                <h2>Edit Klaim: {{ $claim->name }}</h2>
                 <span id="close">&times;</span>
             </div>
             <div class="modal-body">
