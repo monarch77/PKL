@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     var modal = document.getElementById("editModal");
     var closeModalBtn = document.getElementById("close");
-    var claimLinks = document.querySelectorAll(".edit");
+    var claimLinks = document.querySelectorAll(".edit-akun");
 
     claimLinks.forEach(function (link) {
         link.addEventListener("click", function (e) {

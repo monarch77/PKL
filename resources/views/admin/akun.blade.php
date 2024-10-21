@@ -12,6 +12,10 @@
 <div class="container-1">
     <header>Manajemen Akun</header>
 
+    @if ($users->isEmpty())
+    
+    <p>Tidak ada user yang ditemukan.</p>
+    @else
     <table>
         <thead>
             <tr>
@@ -29,30 +33,39 @@
                 <td>{{ $pengguna->name }}</td>
                 <td>{{ $pengguna->username }}</td>
                 <td>{{ $pengguna->email }}</td>
-                <td>{{ $pengguna->role }}</td>
+                <td>
+                    <span class="role
+                        @if ($pengguna->role == 'admin') admin
+                        @elseif ($pengguna->role == 'user') user
+                        @endif">
+                        {{ $pengguna->role }}
+                    </span>
+                </td>
                 <td>
                     <span class="status 
                         @if ($pengguna->status == 'Aktif') aktif
                         @elseif ($pengguna->status == 'Tidak Aktif') tidak-aktif
                         @endif">
                         {{ $pengguna->status }}
+                    </span>
                 </td>
-                </span>
                 <td>
-                    <a href="{{ route('admin.akun.edit', $pengguna->id) }}" class="edit"
+                    <a href="{{ route('admin.akun.edit', $pengguna->id) }}" class="edit-akun"
                         data-nama="{{ $pengguna->name }}"
                         data-username="{{ $pengguna->username }}"
                         data-email="{{ $pengguna->email }}"
                         data-role="{{ $pengguna->role }}"
                         data-status="{{ $pengguna->status }}">
 
-                        Edit
+                        <button type="submit" class="btn-edit">
+                            Edit
+                        </button> 
                     </a>
                     <form action="{{ route('admin.akun.delete', $pengguna->id) }}" method="POST" class="delete-akun">
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="delete-button">
+                        <button type="submit" class="btn-delete">
                             Delete
                         </button>
                     </form>
@@ -63,6 +76,8 @@
             @endforeach
         </tbody>
     </table>
+    @endif
+
 </div>
 
 @if (session('delete_success'))

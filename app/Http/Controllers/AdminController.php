@@ -41,6 +41,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $users = User::where('role', '!=', 'admin')->get();
+        // $users = User::all();
         return view('admin.akun', compact('user', 'users'));
     }
 
