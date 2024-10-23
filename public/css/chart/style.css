@@ -1,0 +1,81 @@
+.laporan-section {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.statistik-section {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    /* margin-top: 70px; */
+}
+
+.statistik-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.statistik-item {
+    background-color: #e8f1fa;
+    padding: 10px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.statistik-item h4 {
+    font-size: 1.0rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.statistik-item .angka {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.statistik-item.total  {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.statistik-item.disetujui, .statistik-item.aktif{
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.statistik-item.ditolak {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.statistik-item.menunggu {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+.statistik-item.nonaktif {
+    background-color: grey;
+    color: #fff;
+}
+
+.statistik-item p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #34495e;
+}
+
+#grafik-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+canvas#klaimChart {
+    max-width: 100%;
+}

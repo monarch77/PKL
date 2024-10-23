@@ -12,7 +12,18 @@ class AdminController extends Controller
     function index()
     {
         $user = Auth::user();
-        return view(('admin.dashboard'), compact('user'));
+        $claims = Claim::orderBy('created_at', 'desc')->take(3)->get();
+        $totalKlaim = Claim::count();
+        $totalKlaimDisetujui = Claim::where('status', 'Disetujui')->count();
+        $totalKlaimDitolak = Claim::where('status', 'Ditolak')->count();
+        $totalKlaimMenunggu = Claim::where('status', 'Menunggu')->count();
+        
+        $totalUser = User::where('role', 'user')->count();
+        $totalAkunAktif = User::where('role', 'user')->where('status', 'Aktif')->count();
+        $totalAkunNonaktif = User::where('role', 'user')->where('status', 'Tidak Aktif')->count();
+
+        return view(('admin.dashboard'), compact('user','claims',  'totalKlaim', 'totalKlaimDisetujui',
+         'totalKlaimDitolak', 'totalKlaimMenunggu' , 'totalUser', 'totalAkunAktif', 'totalAkunNonaktif'));
     }
 
     public function showAllClaims()
@@ -21,6 +32,12 @@ class AdminController extends Controller
         $claims = Claim::all();
         return view('admin.klaim', compact('user', 'claims'));
     }
+
+    // public function showRecentClaims() {
+    //     $user = Auth::user();
+    //     $claims = Claim::orderBy('created_at', 'desc')->take(5)->get();
+    //     return view('admin.dashboard', compact('user', 'claims'));
+    // }
 
     public function update(Request $request, $id)
     {
@@ -85,6 +102,19 @@ class AdminController extends Controller
     public function laporan()
     {
         $user = Auth::user();
-        return view(('admin.laporan'), compact('user'));
+        $totalKlaim = Claim::count();
+        $totalKlaimDisetujui = Claim::where('status', 'Disetujui')->count();
+        $totalKlaimDitolak = Claim::where('status', 'Ditolak')->count();
+        $totalKlaimMenunggu = Claim::where('status', 'Menunggu')->count();
+
+        $klaimPerJenis = Claim::select('claim_type', Claim::raw('count(*) as total'))->groupBy('claim_type')->pluck('total', 'claim_type');
+
+        $klaimLabels = $klaimPerJenis->keys();
+        $klaimData = $klaimPerJenis->values();
+
+        return view(('admin.laporan'), compact('user', 'totalKlaim', 'totalKlaimDisetujui', 'totalKlaimDitolak', 'totalKlaimMenunggu', 'klaimLabels', 'klaimData'));
+
+
+
     }
 }

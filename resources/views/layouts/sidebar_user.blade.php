@@ -65,12 +65,12 @@
                     </span>
                     <h3>Pengaturan</h3>
                 </a>
-                <a href="#">
+                <!-- <a href="#">
                     <span class="material-symbols-outlined">
                         help
                     </span>
                     <h3>Bantuan</h3>
-                </a>
+                </a> -->
                 <a href="/logout" class="logout-link">
                     <span class="material-symbols-outlined">
                         logout

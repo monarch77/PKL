@@ -120,7 +120,6 @@
                 <th>Nominal Klaim</th>
                 <th>Dokumen Pendukung</th>
                 <th>Status</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
