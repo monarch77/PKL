@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Claim;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ClaimController extends Controller
 {
@@ -78,7 +79,10 @@ class ClaimController extends Controller
             'nominal_claim' => $nominalClaim,
             'deskripsi_kejadian' => $validatedData['deskripsi_kejadian'],
             'dokumen_pendukung' => json_encode($dokumenPaths),
-            'status' => 'Menunggu'
+            'status' => 'Menunggu',
+            'created_at' => Carbon::now('Asia/Jakarta'),
+            'updated_at' => Carbon::now('Asia/Jakarta'),
+
         ]);
 
 
@@ -89,7 +93,7 @@ class ClaimController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        $claims = $user->claims;
+        $claims = $user->claim;
         $claim = Claim::findOrFail($id);
 
         return view('user.edit', compact('user', 'claims', 'claim'));

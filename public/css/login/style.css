@@ -80,6 +80,12 @@ form.sign-up-form{
     margin-bottom: 10px;
 }
 
+.logo img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
 .input-field{
     max-width: 380px;
     width: 100%;

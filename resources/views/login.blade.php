@@ -18,6 +18,9 @@
             <div class="signin-signup">
                 <form action="{{ route('login')}}" class="sign-in-form" method="POST">
                     @csrf
+                    <div class="logo">
+                        <img src="images/login/logo.png" alt="logo">
+                    </div>
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
@@ -56,6 +59,9 @@
                 </form>
                 <form action="{{ route('signup') }}" class="sign-up-form" method="POST">
                     @csrf
+                    <div class="logo">
+                        <img src="images/login/logo.png" alt="logo">
+                    </div>
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>

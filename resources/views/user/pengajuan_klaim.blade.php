@@ -208,21 +208,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-<script>
-    //alert add klaim
-    document.getElementById('klaimForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        Swal.fire({
-            title: 'Berhasil',
-            text: 'Klaim Anda berhasil diajukan.',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        }).then(() => {
-            this.submit();
-        });
-    });
-</script>
+<script src="{{ asset('js/alert.js') }}"></script>
 <script src="{{ asset('js/klaim/script.js') }}"></script>
 
 @endsection

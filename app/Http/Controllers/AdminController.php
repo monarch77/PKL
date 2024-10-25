@@ -29,15 +29,9 @@ class AdminController extends Controller
     public function showAllClaims()
     {
         $user = Auth::user();
-        $claims = Claim::all();
+        $claims = Claim::orderBy('created_at', 'desc')->get();
         return view('admin.klaim', compact('user', 'claims'));
     }
-
-    // public function showRecentClaims() {
-    //     $user = Auth::user();
-    //     $claims = Claim::orderBy('created_at', 'desc')->take(5)->get();
-    //     return view('admin.dashboard', compact('user', 'claims'));
-    // }
 
     public function update(Request $request, $id)
     {

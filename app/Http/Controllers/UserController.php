@@ -14,7 +14,7 @@ class UserController extends Controller
 
     function klaim (){
         $user = Auth::user();
-        $claims = $user->claims;
+        $claims = $user->claims()->orderBy('created_at', 'desc')->get();
         return view(('user.klaim'), compact('user', 'claims'));
     }
 
