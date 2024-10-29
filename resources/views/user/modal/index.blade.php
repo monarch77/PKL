@@ -26,6 +26,7 @@
             <p><strong>Tanggal Kejadian:</strong> <span id="modal-tanggal-kejadian"></span></p>
             <p><strong>Nominal Klaim:</strong> <span id="modal-nominal-klaim"></span></p>
             <p><strong>Deskripsi Kejadian:</strong> <span id="modal-deskripsi"></span></p>
+            <p id="modal-alasan" style="display: none;"><strong>Alasan Penolakan:</strong> <span id="modal-alasan-text"></span></p>
         </div>
         <div class="modal-footer">
             <button id="download-claim" class="buttons">

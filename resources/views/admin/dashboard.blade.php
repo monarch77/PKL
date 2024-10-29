@@ -53,7 +53,7 @@
         </div>
 
     </div>
-    
+
     <div class="container-2">
         <header>Klaim Terbaru</header>
 
@@ -80,8 +80,27 @@
                         <td>{{ $claim->no_polis }}</td>
                         <td>{{ $claim->user->name }}</td>
                         <td>{{ $claim->claim_type }}</td>
-                        <td>{{ $claim->nominal_claim }}</td>
-                        <td>{{ $claim-> status }}</td>
+                        <td>Rp. {{ number_format($claim->nominal_claim, 0, ',', '.') }}</td>
+                        <td>
+                            <span class="status
+                                @if($claim->status === 'Menunggu')
+                                    @if (Auth::user()->role === 'manager') menunggu
+                                    @else diproses
+                                    @endif 
+                                @elseif($claim->status === 'Disetujui') disetujui
+                                @elseif($claim->status === 'Ditolak') ditolak
+                                @endif">
+                                @if($claim->status === 'Menunggu')
+                                @if(Auth::user()->role === 'manager')
+                                {{ $claim->status }}
+                                @else
+                                Diproses
+                                @endif
+                                @else
+                                {{ $claim->status }}
+                                @endif
+                            </span>
+                        </td>
                         <td>{{ $claim->created_at }}</td>
                     </tr>
                     @endforeach

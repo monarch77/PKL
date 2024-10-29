@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
             var tanggal_kejadian = this.getAttribute("data-tanggal-kejadian");
             var nominal_claim = this.getAttribute("data-nominal-claim");
             var deskripsi = this.getAttribute("data-deskripsi");
+            var alasan = this.getAttribute("data-alasan");
+            var status = this.getAttribute("data-status");
 
             document.getElementById("modal-no-polis").innerText = polis;
             document.getElementById("modal-nama").innerText = nama;
@@ -51,6 +53,13 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("modal-tanggal-kejadian").innerText = tanggal_kejadian;
             document.getElementById("modal-nominal-klaim").innerText = nominal_claim;
             document.getElementById("modal-deskripsi").innerText = deskripsi;
+
+            if (status === "Ditolak") {
+                document.getElementById("modal-alasan-text").innerText = alasan;
+                document.getElementById("modal-alasan").style.display = "block";
+            } else {
+                document.getElementById("modal-alasan").style.display = "none";
+            }
 
             modal.style.display = "block";
         });

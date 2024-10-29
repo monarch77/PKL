@@ -14,7 +14,7 @@
 
     @if ($users->isEmpty())
     
-    <p>Tidak ada user yang ditemukan.</p>
+    <p>Tidak ada nasabah yang ditemukan.</p>
     @else
     <table>
         <thead>
@@ -35,8 +35,8 @@
                 <td>{{ $pengguna->email }}</td>
                 <td>
                     <span class="role
-                        @if ($pengguna->role == 'admin') admin
-                        @elseif ($pengguna->role == 'user') user
+                        @if ($pengguna->role == 'manager') manager
+                        @elseif ($pengguna->role == 'nasabah') nasabah
                         @endif">
                         {{ $pengguna->role }}
                     </span>

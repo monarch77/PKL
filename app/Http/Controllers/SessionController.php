@@ -34,12 +34,12 @@ class SessionController extends Controller
         if (Auth::attempt($infologin)) {
             if (Auth::user()->status !== 'Aktif') {
                 Auth::logout();
-                return redirect()->back()->withErrors(['login' => 'Akun Anda tidak aktif, silahkan hubungi Administrator'])->withInput();
+                return redirect()->back()->withErrors(['login' => 'Akun Anda tidak aktif, silahkan hubungi Manager'])->withInput();
             }
             
-            if (Auth::user()->role == 'admin') {
+            if (Auth::user()->role == 'manager') {
                 return redirect('/admin/dashboard');
-            } else if (Auth::user()->role == 'user') {
+            } else if (Auth::user()->role == 'nasabah') {
                 return redirect('/user/dashboard');
             }
         } else {
@@ -120,9 +120,9 @@ class SessionController extends Controller
             $user->role = $request->role;
             $user->save();
 
-            if (Auth::user()->role == 'admin') {
+            if (Auth::user()->role == 'manager') {
                 return redirect()->route('admin.dashboard')->with('success', 'Profile Berhasil Dilengkapi');
-            } elseif (Auth::user()->role == 'user') {
+            } elseif (Auth::user()->role == 'nasabah') {
                 return redirect()->route('user.dashboard')->with('success', 'Profile Berhasil Dilengkapi');
             }
         }

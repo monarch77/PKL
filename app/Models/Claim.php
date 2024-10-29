@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Claim extends Model
 {
     use HasFactory;
+    
     protected $table = 'claims';
     protected $fillable = [
         'user_id',

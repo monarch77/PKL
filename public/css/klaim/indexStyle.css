@@ -165,12 +165,12 @@ td{
     color: white;
 }
 
-.role.user {
+.role.nasabah {
     background-color: #5bc0de;
     color: white;
 }
 
-.role.admin {
+.role.manager {
     background-color: #d9534f;
     color: white;
 }

@@ -93,7 +93,7 @@
                         @csrf
                         @method('PATCH')
                         <button type="submit" class="btn-approve" name="action" value="approve">Setujui</button>
-                        <button type="submit" class="btn-reject" name="action" value="reject">Tolak</button>
+                        <button type="button" class="btn-reject" data-id="{{ $claim->id }}" onclick="openRejectModal('{{ $claim->id }}')">Tolak</button>
                     </form>
                 </td>
             </tr>
@@ -193,5 +193,9 @@
 </div>
 
 <script src="{{ asset('js/modal/index.js') }}"></script>
+<script src="{{ asset('js/modal/admin/reject.js') }}"></script>
+
+
 @include('user.modal.index')
+@include('admin.modal.reject')
 @endsection

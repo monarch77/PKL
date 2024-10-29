@@ -18,9 +18,9 @@ class AdminController extends Controller
         $totalKlaimDitolak = Claim::where('status', 'Ditolak')->count();
         $totalKlaimMenunggu = Claim::where('status', 'Menunggu')->count();
         
-        $totalUser = User::where('role', 'user')->count();
-        $totalAkunAktif = User::where('role', 'user')->where('status', 'Aktif')->count();
-        $totalAkunNonaktif = User::where('role', 'user')->where('status', 'Tidak Aktif')->count();
+        $totalUser = User::where('role', 'nasabah')->count();
+        $totalAkunAktif = User::where('role', 'nasabah')->where('status', 'Aktif')->count();
+        $totalAkunNonaktif = User::where('role', 'nasabah')->where('status', 'Tidak Aktif')->count();
 
         return view(('admin.dashboard'), compact('user','claims',  'totalKlaim', 'totalKlaimDisetujui',
          'totalKlaimDitolak', 'totalKlaimMenunggu' , 'totalUser', 'totalAkunAktif', 'totalAkunNonaktif'));
@@ -39,19 +39,31 @@ class AdminController extends Controller
 
         if ($request->action == 'approve') {
             $claim->status = 'Disetujui';
-        } else {
-            $claim->status = 'Ditolak';
-        }
+        } 
 
         $claim->save();
 
         return redirect()->route('admin.klaim')->with('success', 'Status Klaim Telah Diperbarui');
     }
 
+    public function reject(Request $request, $id)
+{
+    $request->validate([
+        'alasan_penolakan' => 'required|string',
+    ]);
+
+    $claim = Claim::findOrFail($id);
+    $claim->status = 'Ditolak';
+    $claim->alasan_penolakan = $request->alasan_penolakan;
+    $claim->save();
+
+    return redirect()->route('admin.klaim')->with('success', 'Klaim berhasil ditolak.');
+}
+
     public function indexUser()
     {
         $user = Auth::user();
-        $users = User::where('role', '!=', 'admin')->get();
+        $users = User::where('role', '!=', 'manager')->get();
         // $users = User::all();
         return view('admin.akun', compact('user', 'users'));
     }

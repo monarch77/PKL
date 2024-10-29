@@ -31,8 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/akun/{id}', [AdminController::class, 'updateUser'])->name('admin.akun.update');
     Route::delete('/admin/akun/{id}', [AdminController::class, 'deleteUser'])->name('admin.akun.delete');
     Route::get('/admin/klaim', [AdminController::class, 'showAllClaims'])->name('admin.klaim');
-    // Route::get('/admin/klaim-terbaru', [AdminController::class, 'showRecentClaims'])->name('admin.klaim.terbaru');
     Route::patch('/admin/klaim/{id}', [AdminController::class, 'update'])->name('admin.klaim.update');
+    Route::patch('/admin/klaim/{id}/reject', [AdminController::class, 'reject'])->name('admin.klaim.reject');
     Route::get('/admin/laporan', [AdminController::class, 'laporan'])->name('admin.laporan');
     
     //user
