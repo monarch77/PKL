@@ -148,7 +148,9 @@
                         data-claim-type="{{ $claim->claim_type }}"
                         data-tanggal-kejadian="{{ $claim->tanggal_kejadian }}"
                         data-nominal-claim="Rp. {{ number_format($claim->nominal_claim, 0, ',', '.') }}"
-                        data-deskripsi="{{ $claim->deskripsi_kejadian }}">
+                        data-deskripsi="{{ $claim->deskripsi_kejadian }}"
+                        data-alasan="{{ $claim->alasan_penolakan }}"
+                        data-status="{{ $claim->status }}">
                         {{ $claim->no_polis }}
                     </a>
                 </td>

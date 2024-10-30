@@ -3,7 +3,7 @@
 @section('title', 'Dashboard Admin')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/klaim/indexStyle.css') }}"> <!-- Tampilan Klaim -->
+<link rel="stylesheet" href="{{ asset('css/klaim/indexStyle.css') }}"> <!-- Tampilan Dashboard -->
 <link rel="stylesheet" href="{{ asset('css/chart/style.css') }}"> <!-- Tampilan Grafik -->
 
 <div class="dashboard-container">

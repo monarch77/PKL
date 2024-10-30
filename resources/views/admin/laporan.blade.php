@@ -8,10 +8,20 @@
 <link rel="stylesheet" href="{{ asset('css/chart/style.css') }}"> <!-- Tampilan Grafik -->
 
 <div class="dashboard-container">
+    
+    <div class="container-2">
+        <div class="laporan-section grafik">
+            <header>Grafik Klaim Berdasarkan Jenis</header>
+            <canvas id="klaimChart"></canvas>
+            
+            <input type="hidden" id="klaimLabels" value='@json($klaimLabels)'>
+            <input type="hidden" id="klaimData" value='@json($klaimData)'>
+        </div>
+    </div>
     <div class="container-2">
         <header>Statistik Klaim</header>
     
-        <div class="laporan-section">
+        <!-- <div class="laporan-section">
             <div class="statistik-container">
                 <div class="statistik-item total">
                     <h4>Total</h4>
@@ -30,17 +40,7 @@
                     <p class="angka">{{ $totalKlaimMenunggu }}</p>
                 </div>
             </div>
-        </div>
-    </div>
-        
-    <div class="container-2">
-        <div class="laporan-section grafik">
-            <header>Grafik Klaim Berdasarkan Jenis</header>
-            <canvas id="klaimChart"></canvas>
-    
-            <input type="hidden" id="klaimLabels" value='@json($klaimLabels)'>
-            <input type="hidden" id="klaimData" value='@json($klaimData)'>
-        </div>
+        </div> -->
     </div>
 </div>
 
