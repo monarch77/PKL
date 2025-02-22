@@ -11,6 +11,7 @@ class Claim extends Model
     use HasFactory;
     
     protected $table = 'claims';
+    public $timestamps = true;
     protected $fillable = [
         'user_id',
         'no_polis',

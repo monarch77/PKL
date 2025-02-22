@@ -34,17 +34,20 @@ class SessionController extends Controller
         if (Auth::attempt($infologin)) {
             if (Auth::user()->status !== 'Aktif') {
                 Auth::logout();
-                return redirect()->back()->withErrors(['login' => 'Akun Anda tidak aktif, silahkan hubungi Manager'])->withInput();
+                return redirect()->back()->withErrors(['login' => 'Akun Anda tidak aktif, silahkan hubungi Admin'])->withInput();
             }
-            
+
             if (Auth::user()->role == 'manager') {
-                return redirect('/admin/dashboard');
+                return redirect('/manager/dashboard');
             } else if (Auth::user()->role == 'nasabah') {
-                return redirect('/user/dashboard');
+                return redirect('/nasabah/dashboard');
+            } else if (Auth::user()->role == 'admin') {
+                return redirect('/admin/dashboard');
             }
-        } else {
-            return redirect()->back()->withErrors(['login' => 'Username dan Password yang Dimasukkan Tidak Sesuai'])->withInput();
         }
+
+        // Tambahkan pesan kesalahan jika login gagal
+        return redirect()->back()->withErrors(['login' => 'Email atau Password yang Dimasukkan Tidak Sesuai'])->withInput();
     }
 
     function indexRegister()
@@ -128,7 +131,7 @@ class SessionController extends Controller
         }
 
         return redirect('/')->with('error', 'Role tidak valid.');
-        
+
         // $user = User::find(Session::get('incomplete_profile'));
 
         // $user->update([

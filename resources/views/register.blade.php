@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/registrasi/style.css') }}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Form Registrasi</title>
 </head>
 
@@ -49,8 +50,8 @@
                             <label>Role</label>
                             <select id="role" name="role" required>
                                 <option value="" disabled selected>Pilih Role</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
+                                <option value="manager">Manager</option>
+                                <option value="nasabah">Nasabah</option>
                             </select>
                         </div>
                     </div>

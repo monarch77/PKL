@@ -54,7 +54,9 @@
                         data-claim-type="{{ $claim->claim_type }}"
                         data-tanggal-kejadian="{{ $claim->tanggal_kejadian }}"
                         data-nominal-claim="Rp. {{ number_format($claim->nominal_claim, 0, ',', '.') }}"
-                        data-deskripsi="{{ $claim->deskripsi_kejadian }}">
+                        data-deskripsi="{{ $claim->deskripsi_kejadian }}"
+                        data-alasan="{{ $claim->alasan_penolakan }}"
+                        data-status="{{ $claim->status }}">
                         {{ $claim->no_polis }}
                     </a>
                 </td>
@@ -101,13 +103,21 @@
         </tbody>
     </table>
 
+    <!-- Navigasi Pagination (hanya tampil jika data >= 4) -->
+    @if ($claims->total() >= 4)
+    <div class="pagination">
+        {{ $claims->links() }}
+    </div>
     @endif
 
+    @endif
+
+
 </div>
-<div class="container-1">
+<div class="container-1 riwayat-klaim">
     <header>Riwayat Klaim</header>
 
-    @if ($claims->whereIn('status', ['Disetujui', 'Ditolak'])->isEmpty())
+    @if ($claimsHistory->whereIn('status', ['Disetujui', 'Ditolak'])->isEmpty())
 
     <p>Tidak ada klaim yang ditemukan.</p>
     @else
@@ -123,7 +133,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (($claims->whereIn('status', ['Disetujui', 'Ditolak'])) as $claim)
+            @foreach (($claimsHistory->whereIn('status', ['Disetujui', 'Ditolak'])) as $claim)
             <tr>
                 <td>
                     <a href="" class="show-claim-modal"
@@ -190,11 +200,21 @@
 
     </table>
 
+    <!-- Navigasi Pagination (hanya tampil jika data >= 4)
+    @if ($claims->total() >= 4)
+        <div class="pagination">
+            {{ $claims->links() }}
+        </div>
+    @endif -->
+
     @endif
+
+
 
 </div>
 
-<script src="{{ asset('js/modal/index.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="{{ asset('js/alert.js') }}"></script>
 <script src="{{ asset('js/modal/admin/reject.js') }}"></script>
 
 

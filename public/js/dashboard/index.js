@@ -17,3 +17,17 @@ darkMode.addEventListener('click', () => {
     darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
 })
+
+function toggleMenu() {
+    const subMenu = document.getElementById('subMenu');
+    
+    subMenu.classList.toggle('open-menu');
+}
+
+// // Close the dropdown if the user clicks outside of it
+// window.addEventListener('click', function(event) {
+//     const dropdown = document.getElementById('subMenu');
+//     if (!event.target.matches('.profile-photo img')) {
+//         dropdown.style.display = 'none';
+//     }
+// });

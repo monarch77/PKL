@@ -28,7 +28,9 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" />
+                        <input type="password" name="password" id="password" placeholder="Password" />
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
+
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
                     @if ($errors->has('email'))

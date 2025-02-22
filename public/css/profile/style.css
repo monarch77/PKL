@@ -1,0 +1,203 @@
+/* Import font Poppins jika belum ada */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+
+/* Container utama */
+.container-1 {
+    max-width: 900px;
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 56px 10px;
+    overflow-y: auto;
+
+}
+
+/* Header Profil */
+.container-1 header {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.container-1 header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #4070f4;
+}
+
+/* Form */
+.container-1 form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input field container */
+.fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Input fields styling */
+.input-fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.input-fields label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.input-fields input {
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.input-fields select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+.input-fields select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.input-fields input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.input-fields input.editable {
+    border: 1px solid #007bff;
+    background-color: #f9f9f9;
+    cursor: text;
+}
+
+/* Profile Picture */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-container label {
+    font-weight: 600;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ddd;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.profile-pic:hover {
+    border-color: #4070f4;
+}
+
+#profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Button */
+.submitBtn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4070f4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.submitBtn:hover {
+    background-color: #3358f4;
+}
+
+.toggle-password {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 70%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.toggle-password:hover {
+    color: #333;
+}
+
+.input-fields {
+    position: relative;
+}
+
+/* Error Alert */
+.alert.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.alert.alert-danger ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 600px) {
+    .container-1 {
+        padding: 20px;
+    }
+
+    .input-fields {
+        width: 100%;
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .submitBtn {
+        font-size: 14px;
+    }
+}

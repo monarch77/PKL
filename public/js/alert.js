@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             Swal.fire({
                 title: "Berhasil",
-                text: "Klaim berhasil ditambahkan.",
+                text: "Klaim berhasil diajukan.",
                 icon: "success",
                 confirmButtonText: "OK",
             }).then(() => {
@@ -16,6 +16,36 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+});
+
+//alert setujui klaim
+document.addEventListener("DOMContentLoaded", function () {
+    var deleteForms = document.querySelectorAll(".delete-form");
+
+    deleteForms.forEach(function (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Konfirmasi",
+                text: "Apakah Anda yakin ingin menyetujui klaim ini?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Batal",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: "Klaim berhasil dihapus",
+                        icon: "success",
+                    });
+                    form.submit();
+                }
+            });
+        });
+    });
 });
 
 // alert hapus klaim
@@ -76,6 +106,38 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
+});
+
+//alert edit profil
+function saveProfile() {
+    Swal.fire({
+        title: "Berhasil",
+        text: "Profil berhasil diperbarui.",
+        icon: "success",
+        confirmButtonText: "OK",
+    }).then(() => {
+        form.submit();
+    });
+}
+
+//alert update password
+document.addEventListener("DOMContentLoaded", function () {
+    var updatePasswordForm = document.getElementById("changePasswordForm");
+
+    if (updatePasswordForm) {
+        updatePasswordForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Berhasil",
+                text: "Password berhasil diperbarui.",
+                icon: "success",
+                confirmButtonText: "OK",
+            }).then(() => {
+                this.submit();
+            });
+        });
+    }
 });
 
 // alert logout

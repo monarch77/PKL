@@ -20,10 +20,10 @@
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <a href="/user/dashboard">
+                    <a href="/nasabah/dashboard">
                         <img src="{{ asset('images/dashboard/Logo.png') }}" alt="logo">
                     </a>
-                    <a href="/user/dashboard">
+                    <a href="/nasabah/dashboard">
                         <h2>Insura</h2>
                     </a>
                 </div>
@@ -35,36 +35,36 @@
             </div>
 
             <div class="sidebar">
-                <a href="/user/dashboard">
+                <a href="/nasabah/dashboard">
                     <span class="material-symbols-outlined">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/user/ajukanklaim">
+                <a href="/nasabah/ajukanklaim">
                     <span class="material-symbols-outlined">
                         post_add
                     </span>
                     <h3>Ajukan Klaim</h3>
                 </a>
-                <a href="/user/klaim">
+                <a href="/nasabah/klaim">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
                     <h3>Klaim Saya</h3>
                 </a>
-                <a href="#">
+                <!-- <a href="#">
                     <span class="material-symbols-outlined">
                         insights
                     </span>
                     <h3>Laporan</h3>
-                </a>
-                <a href="#">
+                </a> -->
+                <!-- <a href="#">
                     <span class="material-symbols-outlined">
                         settings
                     </span>
                     <h3>Pengaturan</h3>
-                </a>
+                </a> -->
                 <!-- <a href="#">
                     <span class="material-symbols-outlined">
                         help
@@ -111,7 +111,25 @@
                         <small class="text-muted">{{ $user->role }}</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto Profil">
+                        <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto Profil" onclick="toggleMenu()">
+                    </div>
+                    <div id="subMenu" class="sub-menu-wrap">
+                        <div class="sub-menu">
+                            <div class="user-info">
+                                <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto Profil">
+                                <p>{{ $user->name }}</p>
+                            </div>
+                            <hr>
+
+                            <a href="/nasabah/profile" class="sub-menu-link">
+                                <p>Profile</p>
+                                <span>></span>
+                            </a>
+                            <a href="/nasabah/password" class="sub-menu-link">
+                                <p>Change Password</p>
+                                <span>></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 

@@ -1,6 +1,6 @@
 @extends('layouts.sidebar_admin')
 
-@section('title', 'Dashboard Admin')
+@section('title', 'Dashboard Manager')
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/klaim/indexStyle.css') }}"> <!-- Tampilan Dashboard -->
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="container-2 akun">
+    <!-- <div class="container-2 akun">
         <header>Informasi Akun</header>
 
         <div class="statistik-section">
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
 
     <div class="container-2">
         <header>Klaim Terbaru</header>

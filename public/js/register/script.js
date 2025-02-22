@@ -10,3 +10,15 @@ function previewImage(event) {
     }
     reader.readAsDataURL(event.target.files[0]);
 }
+
+document.querySelector('.submitBtn').addEventListener('click', function(event) {
+    const fileUpload = document.getElementById('file-upload');
+    if (!fileUpload.files.length) {
+        event.preventDefault(); 
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Harap unggah foto profil sebelum mengirim form!',
+        });
+    }
+});

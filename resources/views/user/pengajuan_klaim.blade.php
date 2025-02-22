@@ -48,7 +48,7 @@
                     </div>
                     <div class="input-fields">
                         <label>Nama Lengkap</label>
-                        <input type="text" name="name" placeholder="Masukkan Nama Lengkap" required>
+                        <input type="text" name="name" value="{{ $user->name }}"  readonly>
                     </div>
                     <div class="input-fields">
                         <label>Tanggal Lahir</label>
@@ -56,15 +56,11 @@
                     </div>
                     <div class="input-fields">
                         <label>No Telepon</label>
-                        <input type="number" name="no_hp" placeholder="Masukkan No Telepon" required>
+                        <input type="number" name="no_hp" value="{{ $user->phone_number }}" readonly>
                     </div>
                     <div class="input-fields">
                         <label for="gender">Jenis Kelamin</label>
-                        <select id="gender" name="gender" required>
-                            <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
-                        </select>
+                        <input type="text" name="gender" value="{{ $user->gender }}"  readonly>
                     </div>
                     <div class="input-fields">
                         <label>Pekerjaan</label>

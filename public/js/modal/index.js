@@ -86,36 +86,48 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('download-claim').addEventListener('click', function () {
         var noPolis = document.getElementById('modal-no-polis').innerText;
-        var claimData = {
-            "No Polis": noPolis,
-            "Nama": document.getElementById('modal-nama').innerText,
-            "Tanggal Lahir": document.getElementById('modal-tanggal-lahir').innerText,
-            "No HP": document.getElementById('modal-no-hp').innerText,
-            "Jenis Kelamin": document.getElementById('modal-gender').innerText,
-            "Pekerjaan": document.getElementById('modal-pekerjaan').innerText,
-            "ID Type": document.getElementById('modal-id-type').innerText,
-            "ID Number": document.getElementById('modal-id-number').innerText,
-            "Issued Date": document.getElementById('modal-issued-date').innerText,
-            "Issued Authority": document.getElementById('modal-issued-authority').innerText,
-            "Expired Date": document.getElementById('modal-expired-date').innerText,
-            "Address Type": document.getElementById('modal-address-type').innerText,
-            "Provinsi": document.getElementById('modal-provinsi').innerText,
-            "Kota/Kabupaten": document.getElementById('modal-kota-kabupaten').innerText,
-            "Kecamatan/Kelurahan": document.getElementById('modal-kecamatan-kelurahan').innerText,
-            "RT/RW": document.getElementById('modal-rt-rw').innerText,
-            "Kode Pos": document.getElementById('modal-kode-pos').innerText,
-            "Jenis Klaim": document.getElementById('modal-claim-type').innerText,
-            "Tanggal Kejadian": document.getElementById('modal-tanggal-kejadian').innerText,
-            "Nominal Klaim": document.getElementById('modal-nominal-klaim').innerText,
-            "Deskripsi Kejadian": document.getElementById('modal-deskripsi').innerText
-        };
-        var wb = XLSX.utils.book_new();  
-        var ws = XLSX.utils.json_to_sheet([claimData]);  
-        var fileName = "Klaim - " + noPolis + ".xlsx";
-        
+        var claimData = [
+            ["No Polis", document.getElementById('modal-no-polis').innerText],
+            ["Nama", document.getElementById('modal-nama').innerText],
+            ["Tanggal Lahir", document.getElementById('modal-tanggal-lahir').innerText],
+            ["No HP", document.getElementById('modal-no-hp').innerText],
+            ["Jenis Kelamin", document.getElementById('modal-gender').innerText],
+            ["Pekerjaan", document.getElementById('modal-pekerjaan').innerText],
+            ["ID Type", document.getElementById('modal-id-type').innerText],
+            ["ID Number", document.getElementById('modal-id-number').innerText],
+            ["Issued Date", document.getElementById('modal-issued-date').innerText],
+            ["Issued Authority", document.getElementById('modal-issued-authority').innerText],
+            ["Expired Date", document.getElementById('modal-expired-date').innerText],
+            ["Address Type", document.getElementById('modal-address-type').innerText],
+            ["Provinsi", document.getElementById('modal-provinsi').innerText],
+            ["Kota/Kabupaten", document.getElementById('modal-kota-kabupaten').innerText],
+            ["Kecamatan/Kelurahan", document.getElementById('modal-kecamatan-kelurahan').innerText],
+            ["RT/RW", document.getElementById('modal-rt-rw').innerText],
+            ["Kode Pos", document.getElementById('modal-kode-pos').innerText],
+            ["Jenis Klaim", document.getElementById('modal-claim-type').innerText],
+            ["Tanggal Kejadian", document.getElementById('modal-tanggal-kejadian').innerText],
+            ["Nominal Klaim", document.getElementById('modal-nominal-klaim').innerText],
+            ["Deskripsi Kejadian", document.getElementById('modal-deskripsi').innerText],
+            ["Alasan Penolakan", document.getElementById('modal-alasan-text').innerText]
+        ];
+
+        // Membuat workbook dan worksheet
+        var wb = XLSX.utils.book_new();
+        var ws = XLSX.utils.aoa_to_sheet([["", ""]].concat(claimData));
+
+        // Mengatur lebar kolom
+        ws['!cols'] = [
+            { wch: 20 }, // Lebar kolom pertama (Kunci)
+            { wch: 50 }  // Lebar kolom kedua (Nilai)
+        ];
+
+        // Menambahkan worksheet ke workbook
         XLSX.utils.book_append_sheet(wb, ws, "Klaim Data");
-        
+
+        // Menulis file Excel
+        var fileName = "Klaim - " + noPolis + ".xlsx";
         XLSX.writeFile(wb, fileName);
     });
 });
+
 

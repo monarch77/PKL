@@ -20,10 +20,10 @@
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <a href="/manager/dashboard">
+                    <a href="/admin/dashboard">
                         <img src="{{ asset('images/dashboard/Logo.png') }}" alt="logo">
                     </a>
-                    <a href="/manager/dashboard">
+                    <a href="/admin/dashboard">
                         <h2>Insura</h2>
                     </a>
                 </div>
@@ -35,30 +35,30 @@
             </div>
 
             <div class="sidebar">
-                <a href="/manager/dashboard">
+                <a href="/admin/dashboard">
                     <span class="material-symbols-outlined">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/manager/klaim">
+                <!-- <a href="/admin/klaim">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
                     <h3>Klaim</h3>
-                </a>
-                <!-- <a href="/manager/akun">
+                </a> -->
+                <a href="/admin/akun">
                     <span class="material-symbols-outlined">
                         person_outline
                     </span>
                     <h3>Akun</h3>
-                </a> -->
-                <a href="/manager/laporan">
+                </a>
+                <!-- <a href="/admin/laporan">
                     <span class="material-symbols-outlined">
                         insights
                     </span>
                     <h3>Laporan</h3>
-                </a>
+                </a> -->
                 <!-- <a href="#">
                     <span class="material-symbols-outlined">
                         settings
@@ -121,11 +121,11 @@
                             </div>
                             <hr>
 
-                            <a href="/manager/profile" class="sub-menu-link">
+                            <a href="/admin/profile" class="sub-menu-link">
                                 <p>Profile</p>
                                 <span>></span>
                             </a>
-                            <a href="/manager/password" class="sub-menu-link">
+                            <a href="/admin/password" class="sub-menu-link">
                                 <p>Change Password</p>
                                 <span>></span>
                             </a>

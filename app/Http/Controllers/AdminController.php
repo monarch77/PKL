@@ -29,8 +29,9 @@ class AdminController extends Controller
     public function showAllClaims()
     {
         $user = Auth::user();
-        $claims = Claim::orderBy('created_at', 'desc')->get();
-        return view('admin.klaim', compact('user', 'claims'));
+        $claims = Claim::orderBy('created_at', 'desc')->paginate(4);
+        $claimsHistory = Claim::orderBy('created_at', 'desc')->get();
+        return view('admin.klaim', compact('user', 'claims', 'claimsHistory'));
     }
 
     public function update(Request $request, $id)
@@ -47,23 +48,23 @@ class AdminController extends Controller
     }
 
     public function reject(Request $request, $id)
-{
-    $request->validate([
-        'alasan_penolakan' => 'required|string',
-    ]);
+    {
+        $request->validate([
+            'alasan_penolakan' => 'required|string',
+        ]);
 
-    $claim = Claim::findOrFail($id);
-    $claim->status = 'Ditolak';
-    $claim->alasan_penolakan = $request->alasan_penolakan;
-    $claim->save();
+        $claim = Claim::findOrFail($id);
+        $claim->status = 'Ditolak';
+        $claim->alasan_penolakan = $request->alasan_penolakan;
+        $claim->save();
 
-    return redirect()->route('admin.klaim')->with('success', 'Klaim berhasil ditolak.');
-}
+        return redirect()->route('admin.klaim')->with('success', 'Klaim berhasil ditolak.');
+    }
 
     public function indexUser()
     {
         $user = Auth::user();
-        $users = User::where('role', '!=', 'manager')->get();
+        $users = User::where('role', '!=', 'admin')->get();
         // $users = User::all();
         return view('admin.akun', compact('user', 'users'));
     }
@@ -119,8 +120,30 @@ class AdminController extends Controller
         $klaimData = $klaimPerJenis->values();
 
         return view(('admin.laporan'), compact('user', 'totalKlaim', 'totalKlaimDisetujui', 'totalKlaimDitolak', 'totalKlaimMenunggu', 'klaimLabels', 'klaimData'));
-
-
-
     }
+
+    function profile()
+    {
+        $user = Auth::user();
+        return view(('admin.profile'), compact('user'));
+    }
+
+    function profileAdmin()
+    {
+        $user = Auth::user();
+        return view(('manager.profile'), compact('user'));
+    }
+
+    function password()
+    {
+        $user = Auth::user();
+        return view(('admin.password'), compact('user'));
+    }
+
+    function passwordAdmin()
+    {
+        $user = Auth::user();
+        return view(('manager.password'), compact('user'));
+    }
+    
 }

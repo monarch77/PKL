@@ -5,8 +5,11 @@
             <span id="close">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="editKlaimForm" action="{{ route('admin.akun.update', $pengguna->id) }}" method="POST" enctype="multipart/form-data">
+            <form id="editKlaimForm" action="{{ route('manager.akun.update', $pengguna->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                
+                <input type="hidden" name="id" value="">
+
                 <div class="form-group">
                     <label for="name">Nama</label>
                     <input type="text" name="name" value="{{ $pengguna->name }}" class="form-control">
@@ -23,11 +26,11 @@
                     <label for="role">Role</label>
                     <select id="role" name="role" required>
                         <option value="{{ $pengguna->role }}">{{ $pengguna->role }}</option>
-                        @if ($pengguna->role !== 'admin')
-                        <option value="admin">admin</option>
+                        @if ($pengguna->role !== 'manager')
+                        <option value="manager">manager</option>
                         @endif
-                        @if ($pengguna->role !== 'user')
-                        <option value="user">user</option>
+                        @if ($pengguna->role !== 'nasabah')
+                        <option value="nasabah">nasabah</option>
                         @endif
                     </select>
                 </div>

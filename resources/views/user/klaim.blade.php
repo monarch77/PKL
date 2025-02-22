@@ -145,7 +145,8 @@
     @include('user.modal.edit')
     @endif
 </div>
-<div class="container-1">
+
+<div class="container-1 riwayat-klaim">
     <header>Riwayat Pengajuan Klaim</header>
     @if($claims->filter(function($claim) {
     return in_array($claim->status, ['Disetujui', 'Ditolak']);
@@ -300,7 +301,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-<script src="{{ asset('js/modal/index.js') }}"></script>
 <script src="{{ asset('js/alert.js') }}"></script>
 <script src="{{ asset('js/modal/edit.js') }}"></script>
 
